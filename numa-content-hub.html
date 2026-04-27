@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Numa Organics — Content Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --soft-black: #1a1714;
+    --gold: #d4a84b;
+    --gold-soft: #e9c97a;
+    --cream: #f5efe4;
+    --cream-warm: #ede4d3;
+    --ink: #2a241f;
+    --muted: #8a7e6f;
+    --line: rgba(212, 168, 75, 0.25);
+    --shadow: 0 12px 40px rgba(10, 10, 10, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: 0.01em; }
+  .italic { font-style: italic; }
+
+  /* NAV */
+  nav.topnav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212, 168, 75, 0.15);
+    padding: 16px 32px;
+  }
+  nav.topnav .inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  nav.topnav .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; color: var(--gold); font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  nav.topnav .brand small {
+    display: block; color: var(--cream); font-size: 9px;
+    letter-spacing: 0.4em; margin-top: -4px; font-family: 'Inter';
+    font-weight: 400; text-transform: uppercase;
+  }
+  nav.topnav .links {
+    display: flex; gap: 28px; flex-wrap: wrap;
+  }
+  nav.topnav a {
+    color: var(--cream); text-decoration: none; font-size: 13px;
+    letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400;
+    transition: color 0.3s;
+  }
+  nav.topnav a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: var(--black);
+    color: var(--cream);
+    padding: 100px 32px 120px;
+    position: relative; overflow: hidden;
+    text-align: center;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 30%, rgba(212, 168, 75, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero .inner { max-width: 900px; margin: 0 auto; position: relative; }
+  .hero .eyebrow {
+    color: var(--gold); font-size: 11px; letter-spacing: 0.4em;
+    text-transform: uppercase; margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 400; line-height: 1.1; margin-bottom: 24px;
+    color: var(--cream);
+  }
+  .hero h1 em { color: var(--gold); font-style: italic; font-weight: 500; }
+  .hero p.lead {
+    font-size: 18px; line-height: 1.7;
+    color: rgba(245, 239, 228, 0.78); max-width: 640px;
+    margin: 0 auto 40px;
+  }
+  .hero .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 24px; max-width: 720px; margin: 60px auto 0;
+    padding-top: 40px; border-top: 1px solid rgba(212, 168, 75, 0.2);
+  }
+  .hero .stats .stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; color: var(--gold); font-weight: 500; line-height: 1;
+  }
+  .hero .stats .stat .label {
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    margin-top: 8px; color: rgba(245, 239, 228, 0.6);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 32px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  section.dark { background: var(--soft-black); color: var(--cream); max-width: none; margin: 0; }
+  section.dark .inner { max-width: 1280px; margin: 0 auto; }
+  .section-eyebrow {
+    color: var(--gold); font-size: 11px; letter-spacing: 0.35em;
+    text-transform: uppercase; margin-bottom: 16px; font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400; line-height: 1.15; margin-bottom: 20px;
+  }
+  .section-title em { color: var(--gold); font-style: italic; }
+  .section-lead {
+    font-size: 17px; max-width: 720px; line-height: 1.75;
+    color: var(--muted); margin-bottom: 48px;
+  }
+  section.dark .section-lead { color: rgba(245, 239, 228, 0.7); }
+
+  /* BRAND ESSENCE */
+  .essence-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .essence-card {
+    background: white; padding: 36px 28px; border-radius: 4px;
+    border-top: 2px solid var(--gold);
+    box-shadow: var(--shadow);
+  }
+  .essence-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; margin-bottom: 12px; color: var(--ink);
+  }
+  .essence-card p { color: var(--muted); font-size: 14.5px; }
+
+  /* PILLARS */
+  .pillar-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .pillar-card {
+    background: white; border-radius: 4px;
+    padding: 32px 28px; cursor: pointer;
+    border: 1px solid rgba(212, 168, 75, 0.15);
+    transition: all 0.4s ease; position: relative;
+    overflow: hidden;
+  }
+  .pillar-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+  .pillar-card:hover::before { transform: scaleX(1); }
+  .pillar-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(10, 10, 10, 0.1);
+  }
+  .pillar-card .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; color: var(--gold); letter-spacing: 0.2em;
+    margin-bottom: 16px; font-weight: 500;
+  }
+  .pillar-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 500; line-height: 1.2;
+    margin-bottom: 10px; color: var(--ink);
+  }
+  .pillar-card .tagline {
+    font-style: italic; color: var(--gold); font-size: 13px;
+    font-family: 'Cormorant Garamond', serif; font-weight: 500;
+    margin-bottom: 16px; letter-spacing: 0.02em;
+  }
+  .pillar-card .summary {
+    font-size: 13.5px; color: var(--muted); line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .pillar-card .open-link {
+    color: var(--ink); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--gold); padding-bottom: 4px;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(8px); z-index: 200;
+    display: none; align-items: flex-start; justify-content: center;
+    overflow-y: auto; padding: 40px 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--cream); border-radius: 4px;
+    max-width: 880px; width: 100%; padding: 60px 56px;
+    position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  }
+  .modal .close {
+    position: absolute; top: 24px; right: 24px;
+    background: none; border: 1px solid var(--ink); color: var(--ink);
+    width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+    font-size: 16px; transition: all 0.3s;
+  }
+  .modal .close:hover { background: var(--ink); color: var(--cream); }
+  .modal .modal-eyebrow {
+    color: var(--gold); font-size: 11px; letter-spacing: 0.3em;
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .modal h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 500; margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .modal .modal-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 20px; color: var(--gold);
+    margin-bottom: 32px; font-weight: 500;
+  }
+  .modal-meta {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px; padding: 24px 0; border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line); margin-bottom: 32px;
+  }
+  .modal-meta .meta-item .label {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 6px;
+  }
+  .modal-meta .meta-item .value {
+    font-size: 14px; color: var(--ink);
+  }
+  .modal h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; margin: 32px 0 16px;
+    color: var(--ink);
+  }
+  .modal h3 .accent {
+    display: inline-block; width: 24px; height: 1px; background: var(--gold);
+    vertical-align: middle; margin-right: 12px;
+  }
+  .modal p { color: var(--ink); font-size: 15px; line-height: 1.7; margin-bottom: 12px; }
+  .modal ul.ideas {
+    list-style: none; counter-reset: idea;
+  }
+  .modal ul.ideas li {
+    counter-increment: idea;
+    padding: 14px 0 14px 48px; border-bottom: 1px dashed var(--line);
+    position: relative; font-size: 14.5px; line-height: 1.6; color: var(--ink);
+  }
+  .modal ul.ideas li::before {
+    content: counter(idea, decimal-leading-zero);
+    position: absolute; left: 0; top: 14px;
+    color: var(--gold); font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 600;
+  }
+  .modal ul.ideas li .format {
+    display: inline-block;
+    background: rgba(212, 168, 75, 0.12); color: var(--gold);
+    padding: 2px 10px; border-radius: 100px;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    margin-right: 10px; font-weight: 600; vertical-align: middle;
+  }
+  .caption-template {
+    background: white; border-left: 3px solid var(--gold);
+    padding: 24px 28px; border-radius: 4px; margin: 16px 0;
+    font-style: italic; font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; color: var(--ink); line-height: 1.7;
+  }
+  .hashtag-cloud {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
+  }
+  .hashtag-cloud span {
+    background: white; border: 1px solid var(--line);
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 12px; color: var(--ink);
+  }
+
+  /* CALENDAR */
+  .calendar-controls {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px;
+    align-items: center;
+  }
+  .calendar-controls .control-label {
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted); margin-right: 12px; font-weight: 500;
+  }
+  .filter-btn {
+    padding: 8px 18px; border: 1px solid var(--line); background: transparent;
+    color: var(--ink); font-size: 12px; cursor: pointer;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    border-radius: 100px; transition: all 0.3s;
+  }
+  .filter-btn:hover { border-color: var(--gold); }
+  .filter-btn.active {
+    background: var(--ink); color: var(--cream); border-color: var(--ink);
+  }
+
+  .month-section {
+    margin-bottom: 56px;
+  }
+  .month-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 500; color: var(--ink);
+    margin-bottom: 24px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline; justify-content: space-between;
+  }
+  .month-section h3 .month-num {
+    font-size: 14px; color: var(--gold); letter-spacing: 0.2em;
+    font-family: 'Inter'; font-weight: 500;
+  }
+  .holiday-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+  .holiday-card {
+    background: white; padding: 22px 24px; border-radius: 4px;
+    border-left: 3px solid var(--gold);
+    box-shadow: 0 4px 16px rgba(10,10,10,0.04);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .holiday-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(10,10,10,0.08);
+  }
+  .holiday-card .date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 600; color: var(--gold);
+    letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .holiday-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; line-height: 1.2;
+    margin-bottom: 10px; color: var(--ink);
+  }
+  .holiday-card .tag {
+    display: inline-block;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 100px; margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .tag-ghana { background: #f0e1c4; color: #7a5a1f; }
+  .tag-skin { background: #e1ecdf; color: #3a5a3a; }
+  .tag-nutri { background: #f5dfd0; color: #7a3f1f; }
+  .tag-faith { background: #d9d9eb; color: #3a3a6a; }
+  .tag-global { background: #ebe1e8; color: #6a3a5a; }
+
+  .holiday-card .why {
+    font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px;
+  }
+  .holiday-card .post-idea {
+    font-size: 13px; color: var(--ink); line-height: 1.6;
+    background: var(--cream-warm); padding: 12px 14px; border-radius: 3px;
+  }
+  .holiday-card .post-idea strong {
+    display: block; font-size: 10px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .holiday-card .pillar-tie {
+    margin-top: 10px; font-size: 11px; color: var(--muted);
+    font-style: italic;
+  }
+
+  /* VOICE */
+  .voice-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  @media (max-width: 720px) { .voice-grid { grid-template-columns: 1fr; } }
+  .voice-card {
+    background: white; padding: 32px 28px; border-radius: 4px;
+  }
+  .voice-card.do { border-top: 2px solid #7a8b6a; }
+  .voice-card.dont { border-top: 2px solid #b85a5a; opacity: 0.95; }
+  .voice-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 500; margin-bottom: 16px;
+  }
+  .voice-card.do h3 { color: #5a6b4a; }
+  .voice-card.dont h3 { color: #8a3a3a; }
+  .voice-card ul { list-style: none; }
+  .voice-card li {
+    padding: 8px 0 8px 24px; position: relative; font-size: 14px; line-height: 1.6;
+  }
+  .voice-card.do li::before {
+    content: '✓'; position: absolute; left: 0; color: #7a8b6a; font-weight: 700;
+  }
+  .voice-card.dont li::before {
+    content: '×'; position: absolute; left: 0; color: #b85a5a; font-weight: 700;
+  }
+
+  /* CAPTION FORMULAS */
+  .formula-list {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .formula-card {
+    background: var(--cream-warm); padding: 28px; border-radius: 4px;
+  }
+  .formula-card .formula-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; margin-bottom: 6px;
+  }
+  .formula-card .formula-purpose {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px; font-weight: 600;
+  }
+  .formula-card .formula-structure {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 16px; line-height: 1.7; color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .formula-card .formula-example {
+    font-size: 13px; line-height: 1.65; color: var(--muted);
+    border-top: 1px dashed var(--line); padding-top: 14px;
+  }
+  .formula-card .formula-example strong {
+    color: var(--ink); display: block; font-size: 10px;
+    letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black); color: var(--cream);
+    padding: 60px 32px 40px; text-align: center;
+  }
+  footer .inner { max-width: 720px; margin: 0 auto; }
+  footer .brand-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; color: var(--gold); font-weight: 500;
+    letter-spacing: 0.04em; margin-bottom: 8px;
+  }
+  footer .brand-mark small {
+    display: block; font-family: 'Inter'; font-size: 10px;
+    letter-spacing: 0.5em; color: var(--cream); font-weight: 400;
+    margin-top: -4px;
+  }
+  footer p {
+    font-style: italic; font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; margin: 24px auto; max-width: 540px;
+    color: rgba(245, 239, 228, 0.75);
+  }
+  footer .meta {
+    margin-top: 32px; padding-top: 24px;
+    border-top: 1px solid rgba(212, 168, 75, 0.2);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(245, 239, 228, 0.5);
+  }
+
+  /* Print */
+  @media print {
+    nav.topnav, .calendar-controls, .modal { display: none !important; }
+    body { background: white; }
+    section { padding: 24px 0; }
+  }
+
+  /* Mobile */
+  @media (max-width: 720px) {
+    section { padding: 60px 20px; }
+    .hero { padding: 80px 20px 100px; }
+    .modal { padding: 40px 24px; }
+    .modal h2 { font-size: 32px; }
+    nav.topnav { padding: 14px 20px; }
+    nav.topnav .links { gap: 16px; }
+    nav.topnav a { font-size: 11px; }
+  }
+
+  /* Scroll target offset */
+  section[id] { scroll-margin-top: 80px; }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="inner">
+    <div class="brand">numa<small>Organics — Content Hub</small></div>
+    <div class="links">
+      <a href="#essence">Essence</a>
+      <a href="#pillars">Pillars</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#voice">Voice</a>
+      <a href="#formulas">Captions</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="inner">
+    <div class="eyebrow">For the Numa Organics Social Team</div>
+    <h1>Content that nourishes <em>skin, soul</em> and spirit.</h1>
+    <p class="lead">A living guide to how we tell the Numa story online — fourteen content pillars, hundreds of post seeds, and a rolling calendar of holidays and observances designed for an organic, faith-rooted skincare brand that believes beauty begins from the inside out.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">14</div><div class="label">Content Pillars</div></div>
+      <div class="stat"><div class="num">420+</div><div class="label">Post Seeds</div></div>
+      <div class="stat"><div class="num">90+</div><div class="label">Holiday Hooks</div></div>
+      <div class="stat"><div class="num">12</div><div class="label">Caption Formulas</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ESSENCE -->
+<section id="essence">
+  <div class="section-eyebrow">The Numa Essence</div>
+  <h2 class="section-title">A brand built on the belief that <em>caring for the body</em> is sacred work.</h2>
+  <p class="section-lead">Numa Organics is where scripture meets shea butter. Where nutrition meets nourishment. We make organic skincare for women who want their daily rituals to feel like worship — and our content reflects that same intention.</p>
+
+  <div class="essence-grid">
+    <div class="essence-card">
+      <h3>Faith-rooted</h3>
+      <p>Self-care is stewardship. The body is a temple. Every product, post, and pause is an act of honoring what God has given us.</p>
+    </div>
+    <div class="essence-card">
+      <h3>Organic & honest</h3>
+      <p>We say what's in the jar — and what isn't. Clean ingredients, transparent sourcing, no marketing magic to hide behind.</p>
+    </div>
+    <div class="essence-card">
+      <h3>Inside-out beauty</h3>
+      <p>Glowing skin starts at the dinner table. We talk about hydration, leafy greens, and shea butter in the same breath.</p>
+    </div>
+    <div class="essence-card">
+      <h3>Soft, slow, soulful</h3>
+      <p>We move at the pace of healing. Our voice is the friend who reminds you to breathe, drink water, and start over softly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars" class="dark">
+  <div class="inner">
+    <div class="section-eyebrow">The Fourteen Pillars</div>
+    <h2 class="section-title">Every post we publish belongs to <em>one of these worlds</em>.</h2>
+    <p class="section-lead">Tap any pillar to open its full brief — what it's for, how it sounds, the formats that work best, posting cadence, a caption template, hashtag bank, and 30+ ready-to-shoot post ideas.</p>
+    <div class="pillar-grid" id="pillarGrid"></div>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section id="calendar">
+  <div class="section-eyebrow">The Living Calendar</div>
+  <h2 class="section-title">Holidays, observances and <em>cultural moments</em> we can speak into.</h2>
+  <p class="section-lead">Filter by category to plan ahead. Each entry includes why it matters for a Ghanaian organic skincare brand, a ready-to-adapt post angle, and the pillar it ties back to.</p>
+
+  <div class="calendar-controls">
+    <span class="control-label">Filter</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="ghana">Ghana</button>
+    <button class="filter-btn" data-filter="skin">Skincare/Health</button>
+    <button class="filter-btn" data-filter="nutri">Nutrition</button>
+    <button class="filter-btn" data-filter="faith">Faith</button>
+    <button class="filter-btn" data-filter="global">Global/Cultural</button>
+  </div>
+
+  <div id="calendarRoot"></div>
+</section>
+
+<!-- VOICE -->
+<section id="voice" class="dark">
+  <div class="inner">
+    <div class="section-eyebrow">Voice & Tone</div>
+    <h2 class="section-title">How a Numa post should <em>sound out loud</em>.</h2>
+    <p class="section-lead">Read every caption aloud before publishing. If it sounds like a shouting marketer, rewrite it. If it sounds like a wise older sister whispering across the dinner table, you're home.</p>
+
+    <div class="voice-grid">
+      <div class="voice-card do">
+        <h3>Do this</h3>
+        <ul>
+          <li>Speak softly and with reverence — short sentences, lots of breath.</li>
+          <li>Use lowercase intentionally for poetry, capital letters for product education.</li>
+          <li>Quote scripture sparingly and beautifully, never as a sales tactic.</li>
+          <li>Name ingredients by their origin (e.g. "shea from the Northern Region").</li>
+          <li>Use sensory language — texture, warmth, scent, slowness.</li>
+          <li>Invite reflection: "what does your skin remember?"</li>
+          <li>Centre the customer's becoming, not the product's features.</li>
+          <li>Use Ghanaian Pidgin or Twi naturally where it fits ("chale", "small small").</li>
+          <li>Show real hands, real skin tones, real textures.</li>
+          <li>End with a soft CTA: "save this for Sunday", "tag someone you love".</li>
+        </ul>
+      </div>
+      <div class="voice-card dont">
+        <h3>Don't do this</h3>
+        <ul>
+          <li>Don't shout in all caps or use aggressive sales language.</li>
+          <li>Don't promise dermatological miracles or use "cure", "treat", "heal" loosely.</li>
+          <li>Don't use scripture out of context to pressure a sale.</li>
+          <li>Don't shame skin types, body types, or skincare neglect harshly.</li>
+          <li>Don't trash other brands or compare aggressively.</li>
+          <li>Don't post stock photography that doesn't match Ghanaian skin.</li>
+          <li>Don't over-edit or over-filter our products until they look fake.</li>
+          <li>Don't use heavy emojis or trending slang that ages our voice.</li>
+          <li>Don't ignore questions in DMs — every reply is brand-building.</li>
+          <li>Don't post on autopilot during sensitive cultural moments without checking.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTION FORMULAS -->
+<section id="formulas">
+  <div class="section-eyebrow">Caption Formulas</div>
+  <h2 class="section-title">Twelve repeatable shapes for <em>writing well, fast</em>.</h2>
+  <p class="section-lead">When you don't know how to start, pick a formula and fill it in. These are tested structures that hold the Numa voice while giving each post a job to do.</p>
+
+  <div class="formula-list" id="formulaList"></div>
+</section>
+
+<footer>
+  <div class="inner">
+    <div class="brand-mark">numa<small>Organics</small></div>
+    <p>"Beloved, I pray that you may prosper in all things and be in health, just as your soul prospers." — 3 John 1:2</p>
+    <div class="meta">Content Hub · Internal Use · Updated 2026</div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+/* ========= PILLAR DATA ========= */
+const pillars = [
+  {
+    id: 1,
+    name: "Numa Notes",
+    tagline: "Soft whispers for everyday souls",
+    summary: "Gentle, motivational micro-content that nurtures emotionally and spiritually — positioning self-care as love, reflection, and stewardship.",
+    voice: "Tender, poetic, slow. Like a journal entry shared with a friend at golden hour.",
+    formats: "Single image quote · Story slide · Reel with voiceover · Carousel of 3-5 reflections",
+    cadence: "2–3x per week (Mondays, Wednesdays, Sunday evenings)",
+    promise: "Position Numa as a brand that loves you back.",
+    caption: "for the woman reading this on her lunch break — / your softness is not a setback. / it's the part of you / that survived everything that tried to harden it. // p.s. drink the water. apply the butter. start again, slowly.",
+    hashtags: ["#NumaNotes", "#SoftLifeGhana", "#FaithAndSkincare", "#NurturedNotPolished", "#SelfCareIsStewardship"],
+    ideas: [
+      { f: "Quote tile", t: "'You are not behind. You are blooming on time.' — Sunday reset post." },
+      { f: "Reel", t: "Slow voiceover over hands applying butter: 'this is how I come home to myself.'" },
+      { f: "Carousel", t: "5 slides: 'what your skin remembers' — sleep, water, sunlight, touch, prayer." },
+      { f: "Quote tile", t: "'Stewardship is self-respect.' — Tuesday motivational." },
+      { f: "Story", t: "Bedtime note: 'the day didn't break you, it made room for grace.'" },
+      { f: "Single image", t: "'I am whole even before I'm finished.' — Thursday affirmation." },
+      { f: "Reel", t: "Morning light + scripture overlay + butter scoop close-up." },
+      { f: "Carousel", t: "3 slides: 'permission slip Monday' — to start soft, to take your time, to begin again." },
+      { f: "Quote tile", t: "'Your skincare is worship.' — mid-week reframe." },
+      { f: "Story", t: "Question sticker: 'what part of you needs gentleness today?'" },
+      { f: "Reel", t: "Slow zoom on jar + journal: 'small rituals are still rituals.'" },
+      { f: "Carousel", t: "7 small things that count as self-care (drinking water, washing your face, lighting a candle...)." },
+      { f: "Quote tile", t: "'Soft is strong.' — Wednesday reframe." },
+      { f: "Single image", t: "'You can return to yourself today.' — gentle reminder." },
+      { f: "Story", t: "Reflective prompt: '5 questions to ask before bed.'" },
+      { f: "Reel", t: "Hands lifting butter to face, slow motion: 'i am someone i love.'" },
+      { f: "Quote tile", t: "'Healing isn't linear. Neither is your skin.'" },
+      { f: "Carousel", t: "'For the tired mom' — a 4-slide note about pockets of softness." },
+      { f: "Carousel", t: "'For the tired entrepreneur' — 4 slides on rest as resistance." },
+      { f: "Single image", t: "'You're doing better than you think.'" },
+      { f: "Reel", t: "Voiceover: 'your skin tells the truth. listen to it.'" },
+      { f: "Quote tile", t: "'The body is a temple. Treat it like one.'" },
+      { f: "Story", t: "Note to self: 'don't perform softness. live it.'" },
+      { f: "Carousel", t: "'5 things rest is not' — laziness, weakness, indulgence, optional, earned." },
+      { f: "Quote tile", t: "'Grace is a daily practice.'" },
+      { f: "Reel", t: "Hands holding jar + soft worship music + scripture closing line." },
+      { f: "Single image", t: "'You deserve the version of you you're becoming.'" },
+      { f: "Story", t: "End-of-month reset prompt: 'what will you release in May?'" },
+      { f: "Carousel", t: "'A blessing for tired skin' — 5-slide spoken word." },
+      { f: "Quote tile", t: "'Slow living is rebellion.'" },
+      { f: "Reel", t: "Numa product on a windowsill at sunrise: 'today is unhurried.'" },
+      { f: "Carousel", t: "'Notes from a softer year' — quotes from women who chose rest." }
+    ]
+  },
+  {
+    id: 2,
+    name: "Numa Care Check",
+    tagline: "Two voices. One ritual.",
+    summary: "Branded AI-driven series with two characters: Numa Police playfully calls out skincare neglect; Numa Care Guide offers solutions, prevention tips, and product CTAs.",
+    voice: "Police = cheeky, playful, exaggerated 'caught you!' energy. Guide = warm, knowledgeable, calm.",
+    formats: "Reel skits (15–30s) · Carousel: problem → solution · Story polls + product reveal",
+    cadence: "1–2x per week (try Tuesdays + Fridays)",
+    promise: "Make skincare neglect feel funny, fixable, and Numa-shaped.",
+    caption: "POV: numa police caught you sleeping with sunscreen still on. // numa care guide says: double-cleanse with the gentle balm, follow with the rose toner, lock it in with the night butter. forgive yourself. start tomorrow.",
+    hashtags: ["#NumaCareCheck", "#NumaPolice", "#SkincareReminderGh", "#OrganicSkincareGhana", "#NumaCareGuide"],
+    ideas: [
+      { f: "Reel skit", t: "Numa Police bursts in: 'you went to bed with makeup on?!' Care Guide: 'here's how to repair barrier damage.'" },
+      { f: "Reel skit", t: "Police: 'no SPF in Accra heat??' Guide: explains UV index + recommends Numa SPF butter." },
+      { f: "Carousel", t: "'7 skincare crimes Numa Police will arrest you for' (sleeping in makeup, no SPF, picking, over-exfoliating...)." },
+      { f: "Reel skit", t: "Police checks fridge, finds no water: 'dehydrated AND neglected.' Guide: hydration + serum routine." },
+      { f: "Story poll", t: "'When was the last time you washed your pillowcase?' Police reaction in next slide." },
+      { f: "Reel skit", t: "Police: 'you exfoliating EVERY day?!' Guide: explains 2x/week max + recommends gentle scrub." },
+      { f: "Carousel", t: "'Things Care Guide forgives' (skipping a day, using mom's lotion in a pinch, falling asleep without your routine)." },
+      { f: "Reel skit", t: "Police eyes a $300 routine: 'all that for what??' Guide: simplifies to 4 Numa essentials." },
+      { f: "Story", t: "'Caught in 4K' — voting sticker: which skincare crime are you guilty of?" },
+      { f: "Reel skit", t: "Police: 'you using body lotion on your face?!' Guide: 'face needs different oils — try the rose elixir.'" },
+      { f: "Carousel", t: "'Numa Police's Most Wanted' — top 5 ingredients to avoid (parabens, mineral oil, etc)." },
+      { f: "Reel skit", t: "Police: 'you popping pimples??' Guide: hands-off + spot treatment routine." },
+      { f: "Reel skit", t: "Police: 'no neck care?!' Guide: 'your décolletage is grateful for shea butter too.'" },
+      { f: "Story", t: "Daily check-in: 'did you cleanse today? yes / no / let's not talk about it'." },
+      { f: "Reel skit", t: "Police: 'you skip moisturizer in the rainy season?' Guide: 'humidity ≠ hydration.'" },
+      { f: "Carousel", t: "'Care Guide approved alternatives' — DIYs that don't replace Numa but help in a pinch." },
+      { f: "Reel skit", t: "Police: 'you drinking only Coke??' Guide: hydration math + skincare-from-within tips." },
+      { f: "Reel skit", t: "Police: 'using bar soap on your face?!' Guide: pH balance + Numa cleanser." },
+      { f: "Story", t: "'Care Check Sunday' — answer 5 quick yes/no questions, get a custom routine recommendation." },
+      { f: "Reel skit", t: "Police inspects bathroom shelf: judges products, recommends Numa swap-outs." },
+      { f: "Carousel", t: "'Crimes against your barrier' — over-cleansing, hot water, alcohol toner, no moisturizer." },
+      { f: "Reel skit", t: "Police: 'you not changing pillowcases??' Guide: '2x a week, especially for acne-prone.'" },
+      { f: "Reel skit", t: "Police: 'no morning routine?!' Guide: 3-step lazy girl routine in 90 seconds." },
+      { f: "Story", t: "Test: 'how clean is your phone screen?' Police: 'that's where breakouts come from.'" },
+      { f: "Reel skit", t: "Police: 'you reusing yesterday's makeup brush?' Guide: weekly clean + acne prevention." },
+      { f: "Carousel", t: "Police's 'before and after' arrest reports — fictional cases of skin redemption." },
+      { f: "Reel skit", t: "Police: 'no body care?!' Guide: full-body Numa routine reveal." },
+      { f: "Reel skit", t: "Police catches you stress-snacking on chips: 'inflammation alert.' Guide: skin-friendly snack swaps." },
+      { f: "Story", t: "Mock 'arrest warrant' template — fans share their own skincare crimes." },
+      { f: "Reel skit", t: "Holiday special: Police arrests Santa for not using SPF. Guide: 'sun damages even in December.'" },
+      { f: "Carousel", t: "'When to call Care Guide' — texture changes, sudden breakouts, dryness flares." },
+      { f: "Reel skit", t: "Police catches you using one product for everything. Guide: layering 101." }
+    ]
+  },
+  {
+    id: 3,
+    name: "A Closer Look",
+    tagline: "The story behind every jar",
+    summary: "Customer-led deep dives into favourite Numa products. Shares product story, scripture inspiration, ingredients, scent, texture, personal experience.",
+    voice: "Intimate, observant, sensory. Like a friend recommending her holy grail.",
+    formats: "Long-form Reel (30–60s) · Carousel (8–10 slides) · Live unboxing",
+    cadence: "1x per week (Friday product spotlight)",
+    promise: "Turn every product into a story worth saving and sharing.",
+    caption: "a closer look at the rose hibiscus body butter. // born from a sunday morning prayer over scripture: 'he restoreth my soul.' // shea from tamale, hibiscus from the volta, rosehip oil cold-pressed in small batches. // it smells like a garden after rain. it sinks in like forgiveness. // i use it after every shower, warm from the press. it's the part of my day i protect.",
+    hashtags: ["#ACloserLookNuma", "#NumaProductSpotlight", "#OrganicSkincareGhana", "#CleanBeautyAfrica", "#WhippedShea"],
+    ideas: [
+      { f: "Long-form Reel", t: "Customer narrates her journey with the rose body butter — first impression to current obsession." },
+      { f: "Carousel 8-slide", t: "Anatomy of the night oil: ingredient, origin, scripture, scent, texture, ritual, before/after, CTA." },
+      { f: "Reel", t: "Slow ASMR-style unboxing of the gift set — no voice, just sound." },
+      { f: "Carousel", t: "'What I love about the lip whip' — a customer's 5 reasons + close-up swatches." },
+      { f: "Reel", t: "Texture demo: scoop, spread, melt, absorb. Voiceover: 'this is what self-care should feel like.'" },
+      { f: "Carousel", t: "Behind-the-name: where 'rose hibiscus dew' came from + the verse it's tied to." },
+      { f: "Reel", t: "Side-by-side: morning butter vs. night butter — when to use which." },
+      { f: "Carousel", t: "'5 ways I use the body butter' — post-shower, on cuticles, on knees, before bed, on baby." },
+      { f: "Reel", t: "Customer applies product on camera, no edits, talks about her week using it." },
+      { f: "Carousel", t: "'First impressions vs. 30 days later' — how the rose elixir changed her routine." },
+      { f: "Reel", t: "Sensory storytelling: 'open the jar. close your eyes. tell me what it smells like.'" },
+      { f: "Carousel", t: "'Why this product made me cry' — 4 customers' emotional product moments." },
+      { f: "Reel", t: "Long-form: customer walks through her full Numa shelf, picks a favourite, defends it." },
+      { f: "Carousel", t: "Ingredient deep-dive on the lip balm: shea, beeswax, rosehip, vitamin E — what each does." },
+      { f: "Reel", t: "'Why I keep buying the same scrub' — repeat customer's loyalty story." },
+      { f: "Carousel", t: "'For sensitive skin like mine' — a 7-slide testimony about the gentle cleanser." },
+      { f: "Reel", t: "Slow application of body butter on glowing skin under window light." },
+      { f: "Carousel", t: "'5 textures Numa loves' — whipped, balmy, oily, milky, creamy — why each matters." },
+      { f: "Reel", t: "Customer reveals her morning vs. night Numa routine — full breakdown." },
+      { f: "Carousel", t: "'The story of the founder's first formula' — origin, prayer, recipe evolution." },
+      { f: "Reel", t: "Voiceover testimonial layered over close-up shots of product textures." },
+      { f: "Carousel", t: "Side-by-side slides comparing two similar Numa products — when to choose which." },
+      { f: "Reel", t: "Customer reveals her 'most repurchased' Numa product + a 5-second reason." },
+      { f: "Carousel", t: "Numa product 'fingerprint' — 6 things unique to this jar that other brands skip." },
+      { f: "Reel", t: "'Honest review' — customer films first 7 days of trying a new Numa product." },
+      { f: "Carousel", t: "'How I packed my Numa for travel' — TSA-friendly tips + favourite minis." },
+      { f: "Reel", t: "Customer signs scripture verse + applies butter — a meditative ritual reel." },
+      { f: "Carousel", t: "'What's in my jar' — full ingredient breakdown with origin stories for each." },
+      { f: "Reel", t: "Slow whisk of butter + customer voiceover: 'softness has a sound.'" },
+      { f: "Carousel", t: "Founder's note alongside customer voice — dual perspective on one product." },
+      { f: "Reel", t: "Long-form interview: 'why this product changed my skin and my self-talk.'" },
+      { f: "Carousel", t: "'5 things I didn't expect from this product' — surprising customer benefits." }
+    ]
+  },
+  {
+    id: 4,
+    name: "Quotes",
+    tagline: "Shareable wisdom, daily",
+    summary: "Short, shareable self-care and lifestyle quotes that inspire wellness, productivity, and self-love.",
+    voice: "Concise, beautiful, sometimes scriptural, always sharable.",
+    formats: "Single image tile · Animated text Reel · Story with question sticker",
+    cadence: "3–4x per week (best for fast engagement)",
+    promise: "Become the brand women screenshot and share at midnight.",
+    caption: "save this for the day you forget. tag a friend who needs it.",
+    hashtags: ["#NumaQuotes", "#SoftLifeGh", "#SelfCareSundayGh", "#FaithAndSelfLove", "#WellnessQuotes"],
+    ideas: [
+      { f: "Quote tile", t: "'Rest is a love letter to your future self.'" },
+      { f: "Quote tile", t: "'You are allowed to take up space in your own life.'" },
+      { f: "Quote tile", t: "'Hydration is a form of devotion.'" },
+      { f: "Quote tile", t: "'The body keeps the score. Nourish it.'" },
+      { f: "Quote tile", t: "'You can be both the soft place and the strong one.'" },
+      { f: "Quote tile", t: "'Glow is what happens when you stop apologizing.'" },
+      { f: "Quote tile", t: "'Skincare without sleep is decoration.'" },
+      { f: "Quote tile", t: "'You don't need a detox. You need rest.'" },
+      { f: "Quote tile", t: "'Your skin is listening to your stress.'" },
+      { f: "Quote tile", t: "'Beauty is what you do with what you have.'" },
+      { f: "Reel", t: "Animated text: 'do small things slowly.' Soft music + butter swirl background." },
+      { f: "Quote tile", t: "'Soft girls are still ambitious.'" },
+      { f: "Quote tile", t: "'Inflammation is the body asking for kindness.'" },
+      { f: "Quote tile", t: "'Plant medicine is grandmother wisdom.'" },
+      { f: "Quote tile", t: "'You are not too much. You are exactly right.'" },
+      { f: "Quote tile", t: "'Every glass of water is a vote for your skin.'" },
+      { f: "Reel", t: "Text-on-screen + cinematic Numa b-roll: 'the body remembers tenderness.'" },
+      { f: "Quote tile", t: "'Skincare is self-respect made visible.'" },
+      { f: "Quote tile", t: "'Stress lives in the skin. So does peace.'" },
+      { f: "Quote tile", t: "'Your routine is your rebellion.'" },
+      { f: "Quote tile", t: "'Soft, slow, and in love with myself.'" },
+      { f: "Quote tile", t: "'You are not late. You are layered.'" },
+      { f: "Quote tile", t: "'Even God rested. Why won't you?'" },
+      { f: "Quote tile", t: "'Wellness is a lifestyle, not a season.'" },
+      { f: "Quote tile", t: "'Greens, water, sleep, prayer. The original skincare.'" },
+      { f: "Reel", t: "Sequence of 5 quote slides set to slow music — save-worthy reel." },
+      { f: "Quote tile", t: "'You deserve the same care you give everyone else.'" },
+      { f: "Quote tile", t: "'Slow mornings are sacred.'" },
+      { f: "Quote tile", t: "'Healing happens in the rituals nobody sees.'" },
+      { f: "Quote tile", t: "'A jar of butter and a verse. That's the routine.'" },
+      { f: "Story", t: "Quote + question sticker: 'which line do you needed today?'" },
+      { f: "Quote tile", t: "'Take up space the way shea melts on warm skin — slowly.'" }
+    ]
+  },
+  {
+    id: 5,
+    name: "The Numa Process",
+    tagline: "From raw butter to your shelf",
+    summary: "Behind-the-scenes content showing the full product journey — sourcing, whipping, pouring, packaging, real team moments.",
+    voice: "Honest, hands-in-the-work, slightly nostalgic. Like watching grandma cook.",
+    formats: "Process Reels · Time-lapse · Founder voiceover · Photo carousel",
+    cadence: "1x per week (Wednesday batch day)",
+    promise: "Build trust through transparency. Make customers feel like co-conspirators.",
+    caption: "small batch, slow whip, sunday prayers. // 4kg of shea from tamale arrived monday. tuesday we strained the rose oil. wednesday we whipped (15 minutes, by feel, until peaks form). thursday we let it rest. friday we pour. // every jar holds someone's whole week.",
+    hashtags: ["#TheNumaProcess", "#SmallBatchSkincare", "#MadeInGhana", "#OrganicCraftsmanship", "#SheaButterStories"],
+    ideas: [
+      { f: "Process Reel", t: "From raw shea nut to whipped butter — 60-second time-lapse." },
+      { f: "Carousel", t: "'How a Numa jar is born' — 8 slides from sourcing to shipping." },
+      { f: "Reel", t: "Founder strains rose-infused oil — voiceover on slow infusion." },
+      { f: "Time-lapse", t: "10 minutes of whipping shea butter sped up to 30 seconds." },
+      { f: "Carousel", t: "Meet the suppliers — photos from Tamale shea cooperatives." },
+      { f: "Reel", t: "Pouring fresh batch into jars at golden hour — ASMR style." },
+      { f: "Photo carousel", t: "Hands at work — 5 close-ups of texture, scale, stir." },
+      { f: "Reel", t: "Labelling day — team gathered around table, soft music, hand-finishing." },
+      { f: "Carousel", t: "'Why we still do it by hand' — 4 reasons our process refuses to scale fast." },
+      { f: "Reel", t: "Founder explains why we never use synthetic preservatives — 30 second monologue." },
+      { f: "Time-lapse", t: "From empty studio to packed shipping boxes." },
+      { f: "Carousel", t: "Ingredient origin map — where each component comes from in Ghana + globally." },
+      { f: "Reel", t: "'Day in the life' of the Numa workshop — sunrise to sunset cut." },
+      { f: "Photo carousel", t: "Quality control — how we test every batch before packaging." },
+      { f: "Reel", t: "First test pour of a new product — founder's reaction." },
+      { f: "Carousel", t: "'What you don't see in a jar of Numa' — labour, prayer, time, intention." },
+      { f: "Reel", t: "Pour day timelapse with worship music in the background." },
+      { f: "Photo carousel", t: "Team faces + names + roles — humanizing the brand." },
+      { f: "Reel", t: "Boxing customer orders — handwritten note close-up." },
+      { f: "Carousel", t: "Sourcing trip diary — 8 photos from a visit to a cooperative." },
+      { f: "Reel", t: "Texture science — same butter at 5°C, 25°C, 35°C." },
+      { f: "Carousel", t: "'5 lessons we learned the hard way' — production stories." },
+      { f: "Reel", t: "From the stove to the jar — visual journey of the lip whip." },
+      { f: "Photo carousel", t: "The unaesthetic side — overflowing jars, batch fails, redos." },
+      { f: "Reel", t: "Behind-the-scenes packaging redesign — founder explains the why." },
+      { f: "Carousel", t: "Sustainability story — what we do with leftover materials, jars, and packaging." },
+      { f: "Reel", t: "Slow pour of melted shea into mould for body bars." },
+      { f: "Photo carousel", t: "From farm to face — full ingredient journey of the rose elixir." },
+      { f: "Reel", t: "Studio tour with the founder — what each shelf holds." },
+      { f: "Carousel", t: "'A Numa batch in numbers' — kg, hours, prayers, jars." },
+      { f: "Reel", t: "Hand-pouring vs. machine-pouring side-by-side — why we still choose hand." },
+      { f: "Photo carousel", t: "'A week at Numa' — Monday through Sunday in our workspace." }
+    ]
+  },
+  {
+    id: 6,
+    name: "Testimonies",
+    tagline: "Skin that tells stories",
+    summary: "Real client stories and transformations — building social proof, credibility, and emotional trust through lived experiences.",
+    voice: "Honoring, humble, never staged. Let the customer's voice lead.",
+    formats: "Customer voiceover Reels · Carousel reviews · Before-and-afters · DM screenshots",
+    cadence: "1–2x per week (Mondays + Thursdays)",
+    promise: "Make every customer feel seen, named, and celebrated.",
+    caption: "ama's been with us since 2024. she came in for the body butter and stayed for the lip whip and the rose elixir. here's what she told us last week: '...' // tag your numa sister.",
+    hashtags: ["#NumaTestimonies", "#NumaSisters", "#SkinStories", "#OrganicResults", "#GhanaianGlow"],
+    ideas: [
+      { f: "Reel testimonial", t: "Customer films herself sharing 90-second journey with Numa." },
+      { f: "Carousel", t: "DM screenshot + permission + product reveal — 'this came in last week'." },
+      { f: "Before/after", t: "30-day skin transformation with customer caption in her own words." },
+      { f: "Reel", t: "Customer voiceover over hands applying her favourite Numa product." },
+      { f: "Carousel", t: "'5 customers, 5 stories' — quick quote tiles with photos and names." },
+      { f: "Reel", t: "Customer cries gently sharing how Numa helped through postpartum skin shifts." },
+      { f: "Photo + quote", t: "Customer holds her favourite product + her one-line testimonial." },
+      { f: "Carousel", t: "'My Numa sister Ama' — full feature with her routine + her story." },
+      { f: "Reel", t: "Customer Q&A: 'what would you tell someone considering Numa?'" },
+      { f: "Carousel", t: "Repurchase confessions — 'this is my third jar in 2 months'." },
+      { f: "Reel", t: "Husband films wife reacting to first Numa box — surprise factor." },
+      { f: "Photo carousel", t: "5-star review screenshots styled into branded slides." },
+      { f: "Reel", t: "Customer shows her shelf — every Numa product she's ever bought." },
+      { f: "Carousel", t: "'Why I switched to Numa' — customer's previous routine vs. now." },
+      { f: "Reel", t: "Customer reads her own DM out loud — emotional first-person." },
+      { f: "Photo carousel", t: "'My Numa origin story' series — how each customer found us." },
+      { f: "Reel", t: "Customer demos a routine using only Numa products — 60 seconds." },
+      { f: "Carousel", t: "'What changed' — 4 slides on confidence, skin, ritual, mindset." },
+      { f: "Reel", t: "Customer celebrates her 1-year anniversary with Numa." },
+      { f: "Photo + quote", t: "Mother-daughter customers featured side-by-side." },
+      { f: "Carousel", t: "'Words from a busy mom' — testimony in 4 quotes." },
+      { f: "Reel", t: "Customer shares scripture that Numa products remind her of." },
+      { f: "Photo carousel", t: "Customer's medicine cabinet — Numa front and centre." },
+      { f: "Reel", t: "Surprise customer thank-you call from the founder." },
+      { f: "Carousel", t: "'Skin types we serve' — 5 different customers, 5 different testimonies." },
+      { f: "Reel", t: "Customer films her morning routine, narrates the Numa moment." },
+      { f: "Photo + quote", t: "Bride who used Numa for her wedding glow shares her experience." },
+      { f: "Carousel", t: "'After eczema, after acne, after burnout' — three healing stories." },
+      { f: "Reel", t: "First-time customer's unboxing reaction — raw, no edits." },
+      { f: "Photo carousel", t: "Customer shows journal where she logged her Numa progress." },
+      { f: "Reel", t: "Customer interviews another customer in a friendship-style chat." },
+      { f: "Carousel", t: "Anniversary feature — same customer at month 1, month 6, month 12." }
+    ]
+  },
+  {
+    id: 7,
+    name: "Product Education & Highlights",
+    tagline: "Teaching what each jar does",
+    summary: "Clear educational content explaining what each product does, who it's for, how to use it. Builds buyer confidence.",
+    voice: "Authoritative but warm — knowledgeable older sister, never lecturing.",
+    formats: "Carousel explainer · Reel demo · Story tutorial · Pinned highlight",
+    cadence: "1–2x per week",
+    promise: "Make the customer feel smart and equipped — never overwhelmed.",
+    caption: "the rose elixir, explained in 30 seconds: // ✶ what it is — cold-pressed rosehip + jojoba blend // ✶ who it's for — dehydrated, dull, post-acne skin // ✶ how to use — 3 drops, am or pm, after toner, before butter // ✶ what to expect — 14 days to glow, 30 days to even tone. // questions? our DMs are open.",
+    hashtags: ["#NumaEducation", "#SkincareBasics", "#KnowYourProducts", "#GhanaSkincare", "#CleanBeautyEdu"],
+    ideas: [
+      { f: "Carousel 8-slide", t: "'The rose elixir, explained' — what / who / how / when / why." },
+      { f: "Reel", t: "30-second demo: how to apply face oil correctly (3-drop method)." },
+      { f: "Carousel", t: "'How to layer your Numa routine' — 6 slides from cleanse to seal." },
+      { f: "Reel", t: "AM vs. PM: which Numa products go where." },
+      { f: "Carousel", t: "'The body butter — full breakdown' — texture, season, body parts, frequency." },
+      { f: "Reel", t: "How much is too much? — proper product portions on camera." },
+      { f: "Story tutorial", t: "5-slide step-by-step on cleansing for sensitive skin." },
+      { f: "Carousel", t: "'What does each ingredient do?' — 6 hero ingredients explained." },
+      { f: "Reel", t: "Patch test 101 — how + why + when to skip a product." },
+      { f: "Carousel", t: "'Skin type quiz' — 4 slides to help customers self-identify." },
+      { f: "Reel", t: "Quick-fix demo: lip whip on dry lips before/after in 60 seconds." },
+      { f: "Carousel", t: "'When to use the gentle scrub' — frequency by skin type." },
+      { f: "Story tutorial", t: "How to wash your face properly — 4-step Numa method." },
+      { f: "Reel", t: "Texture comparison: butter vs. lotion vs. oil — when each wins." },
+      { f: "Carousel", t: "'How to read a Numa label' — translating the ingredient list." },
+      { f: "Reel", t: "60-second 'pillow case method' for product storage in Ghana's heat." },
+      { f: "Carousel", t: "'Common mistakes' — over-applying, under-cleansing, mixing too much." },
+      { f: "Reel", t: "How to choose your first Numa product — flowchart in motion." },
+      { f: "Carousel", t: "'For acne-prone skin' — which Numa products to start with." },
+      { f: "Reel", t: "Finger-test demo for product spoilage and freshness." },
+      { f: "Carousel", t: "'Numa for every life stage' — teen, 20s, motherhood, 40s, 60+." },
+      { f: "Reel", t: "Why Numa skips fragrance — explained in 30 seconds." },
+      { f: "Carousel", t: "'How to transition skincare brands' — 5-step gentle method." },
+      { f: "Story tutorial", t: "5-slide on building a 4-product routine without overwhelm." },
+      { f: "Reel", t: "Storage 101 — humidity, sunlight, fridge friends." },
+      { f: "Carousel", t: "'Pregnancy-safe Numa products' — what to use, what to skip." },
+      { f: "Reel", t: "How to decant + travel with Numa products legally and cleanly." },
+      { f: "Carousel", t: "'The body bar method' — how, why, vs. liquid soap." },
+      { f: "Reel", t: "Demo: applying the night oil before bed — pressure points + technique." },
+      { f: "Carousel", t: "'Numa for men' — yes, our products work for everyone." },
+      { f: "Reel", t: "60-second 'morning rush routine' — only 3 Numa products needed." },
+      { f: "Carousel", t: "'Combining Numa with your existing favourites' — what plays nice, what doesn't." }
+    ]
+  },
+  {
+    id: 8,
+    name: "Skin Education / Skincare Tips",
+    tagline: "Knowledge beyond the product",
+    summary: "General skincare guidance that goes beyond Numa products — establishes Numa as a trusted authority on intentional, healthy skin care.",
+    voice: "Generous, expert, brand-agnostic, like a wise dermatologist friend.",
+    formats: "Carousel explainer · Myth-busting Reels · Q&A stories · Long-form blog repurpose",
+    cadence: "2x per week",
+    promise: "Become the brand customers come to learn, not just to buy.",
+    caption: "your skin barrier explained without the science textbook. // think of it like a wall of bricks (skin cells) held together by mortar (ceramides + lipids). when the mortar breaks, water leaks out and irritants leak in. // 5 ways to repair it, in the next slide.",
+    hashtags: ["#NumaEducates", "#SkincareTipsGh", "#SkinScience", "#SkinBarrierHealth", "#OrganicWellness"],
+    ideas: [
+      { f: "Carousel", t: "'Your skin barrier, explained' — 6 slides without science jargon." },
+      { f: "Myth-bust Reel", t: "'Drinking 8 cups of water hydrates your skin' — myth or fact?" },
+      { f: "Carousel", t: "'Why your skin breaks out before your period' — hormonal cycle in 5 slides." },
+      { f: "Reel", t: "'3 things sun damage actually does' — under 30 seconds." },
+      { f: "Carousel", t: "'How to read your skin's signs' — texture, oil, redness, dullness as messengers." },
+      { f: "Reel", t: "Hot shower vs. lukewarm — which wins for skin (and why)." },
+      { f: "Carousel", t: "'5 foods that secretly fight inflammation' — Ghanaian-friendly options." },
+      { f: "Story Q&A", t: "Open submissions: 'ask me anything about your skin'." },
+      { f: "Reel", t: "Demo: how exfoliation should actually feel (gentle, not harsh)." },
+      { f: "Carousel", t: "'Sunscreen myths in Ghana' — 5 things even your aunties got wrong." },
+      { f: "Myth-bust Reel", t: "'Your skin gets used to products' — let's debunk." },
+      { f: "Carousel", t: "'What hormones do to your skin in your 20s vs 30s vs 40s'." },
+      { f: "Reel", t: "How sleep position affects facial wrinkles — 30-second demo." },
+      { f: "Carousel", t: "'Why sweat is actually good for your skin' — 4-slide myth-bust." },
+      { f: "Reel", t: "Cold weather skincare in Harmattan — top 3 fixes." },
+      { f: "Carousel", t: "'Stress acne 101' — the cortisol-skin connection." },
+      { f: "Reel", t: "'Your gut and your face are best friends' — gut-skin axis explained." },
+      { f: "Carousel", t: "'What's actually causing your dark circles' — 5 culprits." },
+      { f: "Story Q&A", t: "Weekly 'skin doctor' session — answer DMs in 5 stories." },
+      { f: "Reel", t: "Why your face wash matters more than your serum — 30 seconds." },
+      { f: "Carousel", t: "'How to know if a product is working' — signs to track over 4 weeks." },
+      { f: "Myth-bust Reel", t: "'Black skin doesn't need SPF' — full debunk." },
+      { f: "Carousel", t: "'5 ingredients to avoid in pregnancy' — safe-list reference." },
+      { f: "Reel", t: "What over-cleansing actually does to your face — visual demo." },
+      { f: "Carousel", t: "'Skincare for teenagers' — 4-step starter guide." },
+      { f: "Reel", t: "How to identify your skin type in 60 seconds." },
+      { f: "Carousel", t: "'The truth about pores' — they don't open and close." },
+      { f: "Story Q&A", t: "Tackle 5 most-asked questions about acne in stories." },
+      { f: "Reel", t: "Why drinking alcohol affects your skin within 24 hours." },
+      { f: "Carousel", t: "'Decoding skin trends' — slugging, glass skin, skin cycling." },
+      { f: "Reel", t: "Stress + skin: 60-second breakdown of how anxiety lives on the face." },
+      { f: "Carousel", t: "'The 5-product rule' — why fewer products often means better skin." }
+    ]
+  },
+  {
+    id: 9,
+    name: "Events / Pop-Ups",
+    tagline: "Numa in real life",
+    summary: "Content showcasing Numa's presence at markets, church wellness events, and pop-up sales — building community visibility.",
+    voice: "Warm, communal, celebratory. Real people, real laughter, real receipts.",
+    formats: "Live Reels · Story takeovers · Highlight covers · Recap carousels",
+    cadence: "Always around event dates + monthly recap",
+    promise: "Turn every gathering into shareable proof of community.",
+    caption: "saturday's pop-up at osu was full. thank you to every sister who came, sat, sniffed, and stayed for the prayer. // here's where we'll be next: [list]. come find us — bring water, bring a friend.",
+    hashtags: ["#NumaPopUp", "#NumaInTheWild", "#AccraEventsGh", "#NumaCommunity", "#ShopLocalGh"],
+    ideas: [
+      { f: "Reel teaser", t: "Pre-event countdown — 'see you saturday at osu' with location reveal." },
+      { f: "Carousel", t: "'What to expect at our pop-up' — 5 slides + sample stations + free shea check." },
+      { f: "Live story", t: "Day-of behind-the-scenes setup — 5–7 stories from morning to open." },
+      { f: "Reel recap", t: "'Saturday was a sermon' — 30-second highlight reel of customer faces." },
+      { f: "Carousel", t: "'Faces of our pop-up' — 8 photos of customers + permission to feature." },
+      { f: "Story takeover", t: "Customer takes over for 1 hour and shows pop-up from her angle." },
+      { f: "Reel", t: "Founder gives a 60-second tour of the event setup." },
+      { f: "Carousel", t: "'Thank you for showing up' — recap + numbers + favourite moment." },
+      { f: "Story announcement", t: "Drop next pop-up date with venue partner tag." },
+      { f: "Reel teaser", t: "What's new at this event — sneak peek of a product launching." },
+      { f: "Live event story", t: "Live demo in real-time — applying butter on a willing volunteer." },
+      { f: "Carousel", t: "'Behind the scenes — what it takes to set up a Numa booth' — 6 photos." },
+      { f: "Story", t: "Polls during event: 'which scent did you love most?'" },
+      { f: "Reel", t: "First customer of the day — celebrate them publicly." },
+      { f: "Carousel", t: "'Numa goes to church' — wellness Sunday recap with pastor partner." },
+      { f: "Reel", t: "Pop-up packing day — boxes, butter, prayers." },
+      { f: "Story takeover", t: "Pastor's wife takes over to share why Numa visited her congregation." },
+      { f: "Carousel", t: "Event vendor neighbour features — community love." },
+      { f: "Reel", t: "Customer reactions — first time smelling each Numa scent." },
+      { f: "Story", t: "Real-time 'what's the queue looking like' updates during the event." },
+      { f: "Carousel", t: "'5 things we learned from this pop-up' — founder's reflection." },
+      { f: "Reel", t: "Sunday brunch pop-up at a wellness studio — full event flow." },
+      { f: "Story", t: "'What's selling out fast' — live updates with restock urgency." },
+      { f: "Carousel", t: "'Pop-up purchases' — featured items + happy customer reveals." },
+      { f: "Reel", t: "Founder + customer hugging at end of event — emotional close." },
+      { f: "Story", t: "Open call: 'where should our next pop-up be?' — answer sticker." },
+      { f: "Carousel", t: "Event partnerships — meet our co-host vendors." },
+      { f: "Reel", t: "Time-lapse of the booth from setup to teardown." },
+      { f: "Story takeover", t: "Influencer attends and shares their Numa experience live." },
+      { f: "Carousel", t: "Numa at a corporate wellness day — recap + ROI for HR teams." },
+      { f: "Reel", t: "'The little girl who came to the booth' — heartwarming customer moment." },
+      { f: "Carousel", t: "Year-in-review of every pop-up Numa attended in 2026." }
+    ]
+  },
+  {
+    id: 10,
+    name: "Ingredient Education",
+    tagline: "What's actually in the jar",
+    summary: "Focused on key ingredients — origins, benefits, properties. Reinforces clean beauty, transparency, and trust.",
+    voice: "Curious, anthropological, almost reverent — these ingredients are sacred craft.",
+    formats: "Single-ingredient Reels · Carousel deep-dives · Origin photo essays",
+    cadence: "1x per week (Tuesday Ingredient Spotlight)",
+    promise: "Make every customer feel like an informed ingredient sleuth.",
+    caption: "shea butter — what your grandmother already knew. // sourced from the karité tree native to west africa. women's cooperatives in the northern region of ghana harvest the nuts, roast, grind, and stone-press them by hand. high in vitamins a, e, f. anti-inflammatory. deeply emollient. // every numa jar starts here.",
+    hashtags: ["#NumaIngredientStory", "#SheaButterGhana", "#OrganicIngredients", "#CleanBeauty", "#KnowWhatsInIt"],
+    ideas: [
+      { f: "Carousel", t: "'Shea butter, told properly' — 8 slides from karité tree to your skin." },
+      { f: "Reel", t: "Rosehip oil 60-second deep dive — what / where / why / how Numa uses it." },
+      { f: "Photo essay", t: "Origin story of our cocoa butter — Ashanti farms in 6 photos." },
+      { f: "Carousel", t: "'5 oils that act like skincare medicine' — jojoba, argan, marula, baobab, hemp." },
+      { f: "Reel", t: "Honey on skin — what it does in 30 seconds." },
+      { f: "Carousel", t: "Hibiscus — Africa's overlooked anti-aging ingredient (5 slides)." },
+      { f: "Reel", t: "Vitamin E — the bodyguard ingredient — 60 seconds." },
+      { f: "Photo essay", t: "Beeswax — visiting our supplier in Brong-Ahafo." },
+      { f: "Carousel", t: "'Why we never use mineral oil' — 5 reasons explained simply." },
+      { f: "Reel", t: "Aloe vera straight from the leaf — texture and benefit demo." },
+      { f: "Carousel", t: "Frankincense — biblical history meets modern skincare (4 slides)." },
+      { f: "Reel", t: "Coconut oil — ally or enemy? Comedogenic rating in 30 seconds." },
+      { f: "Photo essay", t: "Lavender fields + their oil journey to a Numa jar." },
+      { f: "Carousel", t: "'5 ingredients we'll never use' — and why." },
+      { f: "Reel", t: "Tea tree oil — when it works, when it doesn't." },
+      { f: "Carousel", t: "Cocoa butter benefits — origin, melt point, dosage." },
+      { f: "Reel", t: "Castor oil — why grandma used it on babies." },
+      { f: "Photo essay", t: "Inside a women's shea cooperative — 8 photos with names + stories." },
+      { f: "Carousel", t: "Avocado oil — for the hungriest skin (5 slides)." },
+      { f: "Reel", t: "What's the difference between unrefined and refined shea?" },
+      { f: "Carousel", t: "'Ghanaian medicinal plants in skincare' — 6 lesser-known herbs." },
+      { f: "Reel", t: "Argan oil — Morocco's liquid gold explained." },
+      { f: "Photo essay", t: "Hibiscus harvest in the Volta region — 5 photos." },
+      { f: "Carousel", t: "Baobab oil — the upside-down tree that makes skin smile." },
+      { f: "Reel", t: "Why we cold-press, never heat-extract — 60 seconds." },
+      { f: "Carousel", t: "'Common ingredient names decoded' — INCI names you didn't recognize." },
+      { f: "Reel", t: "Vitamin C in skincare vs. on your plate — 30-second comparison." },
+      { f: "Photo essay", t: "Karité (shea) tree life cycle — 7 photos through seasons." },
+      { f: "Carousel", t: "'Essential oil safety' — what's safe on skin, what's not, what to dilute." },
+      { f: "Reel", t: "How long does ingredient potency last — shelf life basics." },
+      { f: "Carousel", t: "'The Bible mentions these skincare ingredients' — frankincense, myrrh, olive oil." },
+      { f: "Reel", t: "Why we test ingredients in small batches — 30 seconds in our lab." }
+    ]
+  },
+  {
+    id: 11,
+    name: "Note to Self",
+    tagline: "Journal pages turned posts",
+    summary: "Reflective, journal-style affirmations written as personal reminders. Encourages rest, softness, grace, and emotional resonance.",
+    voice: "Lowercase. Intimate. Like reading someone's diary they wanted you to read.",
+    formats: "Type-on-cream tile · Handwritten image · Story slide · Audio reel with whispered voiceover",
+    cadence: "2x per week",
+    promise: "Become the brand women turn to when they need to remember who they are.",
+    caption: "note to self: / you are not behind because you took your time. / you are exactly where slow living was always going to lead. / the butter is on the counter. the bath is drawn. dinner doesn't have to be elaborate. // do less. mean it more.",
+    hashtags: ["#NoteToSelfNuma", "#JournalPagesGh", "#SoftLiving", "#FaithfulRestGh", "#NumaJournal"],
+    ideas: [
+      { f: "Type-on-cream tile", t: "'note to self: it's okay to take longer than you planned.'" },
+      { f: "Type tile", t: "'note to self: the butter is on the counter. the day will wait.'" },
+      { f: "Handwritten image", t: "'today, I am gentle with the woman in the mirror.'" },
+      { f: "Audio reel", t: "Whispered voiceover: 'note to self... rest is not behind on the to-do list.'" },
+      { f: "Type tile", t: "'note to self: you don't have to perform peace. you can just have it.'" },
+      { f: "Story slide", t: "'note to self: today is not about productivity. it's about presence.'" },
+      { f: "Type tile", t: "'note to self: skincare counts. dinner counts. prayer counts. all of it counts.'" },
+      { f: "Handwritten image", t: "'I am not too soft for this world. the world needs more of me.'" },
+      { f: "Audio reel", t: "'note to self... the body keeps a record. write it kindly.'" },
+      { f: "Type tile", t: "'note to self: rest before you're tired.'" },
+      { f: "Story slide", t: "'note to self: drink the water. apply the butter. say thank you.'" },
+      { f: "Type tile", t: "'note to self: God didn't ask you to hustle. He asked you to honor.'" },
+      { f: "Handwritten image", t: "'tomorrow I will not be a stranger to my own softness.'" },
+      { f: "Audio reel", t: "'note to self... I am allowed to leave the room.'" },
+      { f: "Type tile", t: "'note to self: my no is a love letter to my yes.'" },
+      { f: "Story slide", t: "'note to self: stop apologizing for needing slowness.'" },
+      { f: "Type tile", t: "'note to self: I am the keeper of this body. I will keep it well.'" },
+      { f: "Handwritten image", t: "'I came home to myself today.'" },
+      { f: "Audio reel", t: "Whispered: 'note to self... the night air is enough.'" },
+      { f: "Type tile", t: "'note to self: skin tells the truth before the mouth does.'" },
+      { f: "Story slide", t: "'note to self: today, do less and feel more.'" },
+      { f: "Type tile", t: "'note to self: the rest you take is the rest you bring.'" },
+      { f: "Handwritten image", t: "'I do not have to earn my rest.'" },
+      { f: "Audio reel", t: "'note to self... my softness is not naive. it is hard-won.'" },
+      { f: "Type tile", t: "'note to self: you can stop spinning now.'" },
+      { f: "Story slide", t: "'note to self: today's prayer is to be gentle with myself.'" },
+      { f: "Type tile", t: "'note to self: skincare is communion.'" },
+      { f: "Handwritten image", t: "'I will not be rushed out of my own life.'" },
+      { f: "Audio reel", t: "Whispered: 'note to self... I am not behind. I am layered.'" },
+      { f: "Type tile", t: "'note to self: my routine is my resistance.'" },
+      { f: "Story slide", t: "'note to self: I will be a good steward of this body and this day.'" },
+      { f: "Type tile", t: "'note to self: I have always been worth this care.'" }
+    ]
+  },
+  {
+    id: 12,
+    name: "Numa FaithFlow",
+    tagline: "Worship as a skincare ritual",
+    summary: "Faith-centered series connecting scripture, worship, and intentional self-care. Includes praise breaks, mini sermonettes, and reminders that caring for the body honors God.",
+    voice: "Reverent, scriptural, warmly evangelical — but never preachy.",
+    formats: "Worship-music Reels · Scripture tile carousels · Sermonette story series · Sunday morning posts",
+    cadence: "2–3x per week (Sundays + midweek)",
+    promise: "Become the only skincare brand that feels like sunday morning.",
+    caption: "'beloved, I pray that you may prosper in all things and be in health, just as your soul prospers.' — 3 john 1:2 // every jar of numa is a reminder: the body is not a project. it is a sanctuary. wash it. anoint it. honor it. // sunday is for slowing down.",
+    hashtags: ["#NumaFaithFlow", "#FaithAndSkincare", "#ScriptureAndSkin", "#FaithfulSelfCare", "#TempleCareGh"],
+    ideas: [
+      { f: "Worship Reel", t: "Slow worship music + butter application + scripture overlay (3 John 1:2)." },
+      { f: "Carousel", t: "'5 verses that frame how we view self-care' — Numa's foundation scripture set." },
+      { f: "Sermonette story", t: "5-slide story: 'why your body is worth tending to — a meditation on Romans 12:1.'" },
+      { f: "Reel", t: "Sunday morning ritual: scripture reading + skincare prep on camera." },
+      { f: "Carousel", t: "'The temple metaphor, unpacked' — 6 slides on 1 Cor 6:19-20 and skincare." },
+      { f: "Worship Reel", t: "Praise break: 30-second clip of joy + Numa product reveal." },
+      { f: "Story series", t: "Lent reflection: '40 days of soft devotion' — daily scripture + prompt." },
+      { f: "Carousel", t: "'Mary anointed His feet — what oil teaches us' — biblical anointing tradition." },
+      { f: "Reel", t: "Founder's testimony: how prayer led to the first product formula." },
+      { f: "Carousel", t: "'Sabbath skin' — 4 ways to honor rest weekly with your skincare ritual." },
+      { f: "Sermonette story", t: "Mini sermon on Genesis 1:31 — 'God called it good. So can you, looking in the mirror.'" },
+      { f: "Reel", t: "Worship + slow product pour + closing prayer (60 seconds)." },
+      { f: "Carousel", t: "'Esther's beauty regimen' — 5 slides on Esther 2:12 and ritual." },
+      { f: "Reel", t: "Customer shares how Numa reminded her of the verse 'fearfully and wonderfully made.'" },
+      { f: "Story series", t: "Advent: 4 sundays, 4 reflections on rest, anointing, beauty, becoming." },
+      { f: "Carousel", t: "'5 prayer prompts for a tired woman' — how to pray over your body." },
+      { f: "Sermonette story", t: "'On rest as obedience' — scripture + reflection 5-slide series." },
+      { f: "Reel", t: "Sunday morning: Numa shelf + open Bible + steaming cup — slow pan." },
+      { f: "Carousel", t: "'Songs of Solomon and skincare' — 5 slides on biblical sensuality + self-honor." },
+      { f: "Worship Reel", t: "Hymn snippet + customer applying butter at golden hour." },
+      { f: "Story series", t: "Holy Week reflection: a 7-day skincare devotional." },
+      { f: "Carousel", t: "'Jesus rested' — 4 slides on the gospel's posture toward exhaustion." },
+      { f: "Reel", t: "Founder reads Psalm 23 over a pour of body butter." },
+      { f: "Carousel", t: "'God anointed kings with oil' — 4 slides on the legacy of oil-as-honoring." },
+      { f: "Sermonette story", t: "Quick teaching: 'why hospitality begins with self-care.'" },
+      { f: "Reel", t: "Quiet acoustic worship + slow, candle-lit nighttime routine." },
+      { f: "Carousel", t: "'5 lies the world tells about your body — and what scripture says back.'" },
+      { f: "Story series", t: "Fasting season skincare guide — 5 slides on hydration, gentleness, rest." },
+      { f: "Reel", t: "Praise dance reel — joy + jar reveal at the end." },
+      { f: "Carousel", t: "'When prayer meets skincare' — 4 ways to combine the two daily." },
+      { f: "Sermonette story", t: "5 slides: 'Mary's alabaster jar + Numa's clay one.'" },
+      { f: "Reel", t: "Christmas morning ritual: scripture, butter, family, slow." }
+    ]
+  },
+  {
+    id: 13,
+    name: "Numa Vibe",
+    tagline: "The studio's heartbeat",
+    summary: "Fun lifestyle content capturing team culture and customer reactions. Highlights authentic moments — product testing, batch-making joy, client favourites.",
+    voice: "Playful, candid, behind-the-curtain. Like inviting a friend into the chaos.",
+    formats: "BTS Reel · Team vlog · Customer reaction stitch · Trending audio moments",
+    cadence: "1–2x per week",
+    promise: "Show the human, joyful side of Numa so customers buy into the people, not just the products.",
+    caption: "team taste-test wednesday. the new lemongrass lip whip — too herbal, not herbal enough, perfect, please make 100 more. // we trust nine palates over one focus group every time.",
+    hashtags: ["#NumaVibe", "#BehindTheBrandGh", "#NumaTeam", "#StudioDays", "#GhanaSmallBusiness"],
+    ideas: [
+      { f: "BTS Reel", t: "Team taste-tests new lip whip — reactions on camera." },
+      { f: "Trending audio", t: "Numa puts a spin on a viral trend in workshop format." },
+      { f: "Team vlog", t: "60-second 'a day at the studio' featuring 3 staff members." },
+      { f: "Customer stitch", t: "Customer reaction video stitched with founder's response." },
+      { f: "BTS Reel", t: "Founder dances while pouring butter — joy is part of the formula." },
+      { f: "Story series", t: "Studio mood today — daily 1-photo slow life snapshot." },
+      { f: "Reel", t: "Test fail compilation — when batches go wrong, how the team laughs through it." },
+      { f: "Trending audio", t: "Use a viral sound to introduce each Numa team member." },
+      { f: "Team vlog", t: "Birthday celebration at the studio — Numa-themed cake reveal." },
+      { f: "BTS Reel", t: "Late-night batch session with worship music + tired team smiles." },
+      { f: "Customer reaction", t: "Compilation of 5 first-time openings of the rose elixir." },
+      { f: "Reel", t: "Workshop sign-makers — staff handwriting product labels with care." },
+      { f: "Story takeover", t: "Apprentice takes over for a day — fresh eyes on the studio." },
+      { f: "Trending audio", t: "Funny take on 'how it started vs how it's going' for a Numa product." },
+      { f: "Team vlog", t: "Lunch break diaries — what the team eats while making your skincare." },
+      { f: "BTS Reel", t: "First test of a new product — full team gathered, anxious smiles." },
+      { f: "Customer stitch", t: "Customer's funny review reposted with team laughing reaction." },
+      { f: "Reel", t: "Pouring fail caught on camera — turned into a 'this is why we do test batches' moment." },
+      { f: "Story series", t: "Weekly 'studio sounds' — ambient ASMR clips of the workspace." },
+      { f: "BTS Reel", t: "Founder + assistant disagreeing playfully about a scent direction." },
+      { f: "Trending audio", t: "'Tell me you make organic skincare without telling me' challenge." },
+      { f: "Team vlog", t: "Saturday studio cleanup — team in matching aprons + slow music." },
+      { f: "BTS Reel", t: "Founder explains how a song changed a product's formulation." },
+      { f: "Customer reaction", t: "Live Q&A clip — funny customer question + sweet founder answer." },
+      { f: "Story takeover", t: "Team member shares her morning routine using Numa." },
+      { f: "Reel", t: "First product photoshoot reactions — outtakes + final shot." },
+      { f: "Team vlog", t: "Field trip day — visiting suppliers as a team activity." },
+      { f: "BTS Reel", t: "Studio rain day — windows fogged, candles lit, work continuing softly." },
+      { f: "Trending audio", t: "Use a popular song to soundtrack a Numa unboxing moment." },
+      { f: "Customer reaction", t: "Husband films wife unboxing — emotional + funny." },
+      { f: "Reel", t: "Numa karaoke — staff sings worship songs while pouring batches." },
+      { f: "Story series", t: "End-of-week studio thoughts — staff voice notes shared as audio stories." }
+    ]
+  },
+  {
+    id: 14,
+    name: "Numa Skin Check Tool",
+    tagline: "AI that listens to your skin",
+    summary: "An AI-powered diagnostic tool that detects skin concerns and recommends personalised product routines. Positions Numa as innovative, caring, and tailored.",
+    voice: "Forward-looking but human. Tech as a friend, not a replacement.",
+    formats: "Demo Reels · How-to carousels · Customer journey stories · Founder vision posts",
+    cadence: "1x per week + every product launch",
+    promise: "Make Numa feel like the only skincare brand that knows you personally.",
+    caption: "introducing the numa skin check — built so we can listen first, recommend second. // upload one selfie. answer 5 short questions. receive a routine made for your skin (and your stress, and your season). // because clean skincare should feel personal.",
+    hashtags: ["#NumaSkinCheck", "#PersonalisedSkincareGh", "#AIWithIntention", "#SkincareTechAfrica", "#KnowYourSkin"],
+    ideas: [
+      { f: "Demo Reel", t: "30-second walkthrough of the Skin Check tool from selfie to routine." },
+      { f: "Carousel", t: "'How the Numa Skin Check works' — 6 slides on the tech + privacy promise." },
+      { f: "Customer story", t: "First user reveals her result + 30-day update post." },
+      { f: "Reel", t: "Side-by-side: results from manual diagnosis vs. Skin Check accuracy." },
+      { f: "Story Q&A", t: "5 most common Skin Check questions answered." },
+      { f: "Carousel", t: "'What your Skin Check report reveals' — full sample report breakdown." },
+      { f: "Reel", t: "Founder vision: 'why we built tech that asks more questions, not fewer.'" },
+      { f: "Customer journey", t: "Document one customer's full 90-day journey with the Skin Check tool." },
+      { f: "Carousel", t: "'5 skin concerns the tool was designed for' — acne, dryness, dullness, sensitivity, post-pregnancy." },
+      { f: "Reel", t: "Quick demo: selfie → 5 questions → routine in under 90 seconds." },
+      { f: "Story series", t: "Daily 'this week's Skin Check insight' — anonymized aggregate trends." },
+      { f: "Carousel", t: "'The privacy promise' — 4 slides on data, deletion, control." },
+      { f: "Reel", t: "Founder explains why she insisted on building this in-house." },
+      { f: "Customer story", t: "Skeptic-turned-fan customer films her Skin Check experience." },
+      { f: "Carousel", t: "'Beyond the camera' — what the Skin Check considers (climate, age, hormones)." },
+      { f: "Reel", t: "AI-generated thank-you message read aloud by founder." },
+      { f: "Story Q&A", t: "Live demo session in stories — answer follower questions live." },
+      { f: "Carousel", t: "'How to take the perfect Skin Check selfie' — lighting, angle, prep." },
+      { f: "Reel", t: "Sample routine reveal — the Skin Check matched her perfectly." },
+      { f: "Customer story", t: "Mother + daughter both take Skin Check — different results, same brand." },
+      { f: "Carousel", t: "'5 things the Skin Check won't do' — what's beyond its scope." },
+      { f: "Reel", t: "Behind-the-scenes of building the tool — founder + tech partner." },
+      { f: "Story series", t: "Weekly 'Skin Check tip of the week' — leverages aggregated learnings." },
+      { f: "Carousel", t: "'Skin Check + dermatologist = best combo' — when to use which." },
+      { f: "Reel", t: "Customer compares her Skin Check result to her routine — matches confirmed." },
+      { f: "Carousel", t: "'How we trained the model' — 5 slides on diverse skin tones + ethical AI." },
+      { f: "Reel", t: "Tech reveal: Skin Check now in Twi + English." },
+      { f: "Customer story", t: "Customer who never used skincare before takes the Skin Check + journey." },
+      { f: "Carousel", t: "Skin Check results explained — what each metric means." },
+      { f: "Reel", t: "Founder takes her own Skin Check — full reveal + reaction." },
+      { f: "Story Q&A", t: "Open mic on stories — what would you want from a future version?" },
+      { f: "Carousel", t: "'A Skin Check is a love letter to your skin' — emotional positioning post." }
+    ]
+  }
+];
+
+/* ========= CALENDAR DATA ========= */
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+const holidays = [
+  // JANUARY
+  { m: 0, d: "Jan 1", name: "New Year's Day", cat: "global", why: "Universal moment of resolution and ritual reset — perfect to launch Numa intention-setting content.", post: "'Soft starts to a new year' carousel — 5 Numa-rooted resolutions: hydrate, anoint, breathe, reflect, return.", pillar: "Numa Notes / Note to Self" },
+  { m: 0, d: "Jan 7", name: "Constitution Day (Ghana)", cat: "ghana", why: "National identity day — opportunity to celebrate Made-in-Ghana craftsmanship.", post: "Founder's note: 'Why Numa is proudly Ghana-grown' — sourcing map carousel.", pillar: "The Numa Process" },
+  { m: 0, d: "Jan", name: "Healthy Weight Awareness Month", cat: "nutri", why: "Reframe wellness around nourishment, not restriction — fits the inside-out beauty thesis.", post: "Carousel: '5 Ghanaian foods that nourish skin from within' — kontomire, palm nut, baobab, etc.", pillar: "Skin Education / Tips" },
+  { m: 0, d: "Jan", name: "Glaucoma Awareness Month", cat: "skin", why: "Eye area awareness — relevant for under-eye skincare conversations.", post: "Quick tip: 'How to care for the skin around your eyes (gently).'", pillar: "Skin Education / Tips" },
+  { m: 0, d: "3rd Mon", name: "Martin Luther King Jr. Day (USA)", cat: "global", why: "Cultural moment honoring service — share Numa's community work.", post: "Highlight community/charity work + a meaningful MLK quote.", pillar: "Events / Pop-Ups" },
+  { m: 0, d: "Jan 24", name: "International Day of Education", cat: "global", why: "Education-led brand value — perfect skincare education push.", post: "Mini-series: 5 things customers commonly get wrong about organic skincare.", pillar: "Skin Education / Tips" },
+
+  // FEBRUARY
+  { m: 1, d: "Feb 4", name: "World Cancer Day", cat: "skin", why: "Skin cancer is preventable. Sunscreen is sacred — Ghanaian myth-busting opportunity.", post: "'Yes, dark skin gets sun damage too' — myth-bust reel.", pillar: "Skin Education / Tips" },
+  { m: 1, d: "Feb 11", name: "International Day of Women & Girls in Science", cat: "global", why: "Numa's formulation science is woman-led.", post: "Founder spotlight + behind-the-scenes of formulation science.", pillar: "The Numa Process" },
+  { m: 1, d: "Feb 13", name: "Galentine's Day", cat: "global", why: "Friendship + self-love angle — gift Numa to a sister.", post: "'Numa for the sisterhood' — gift guide carousel.", pillar: "Quotes / Numa Vibe" },
+  { m: 1, d: "Feb 14", name: "Valentine's Day", cat: "global", why: "Reframe Valentine's around self-love + skincare-as-romance.", post: "'Be your own valentine' Reel — slow ritual with a Numa product.", pillar: "Note to Self" },
+  { m: 1, d: "Feb", name: "American Heart Month", cat: "nutri", why: "Heart-healthy eating = glowing skin. Tie nutrition to skincare.", post: "Carousel: '5 heart-healthy foods that also help your skin.'", pillar: "Skin Education / Tips" },
+  { m: 1, d: "Feb (varies)", name: "Ash Wednesday", cat: "faith", why: "Beginning of Lent — opening for 40-day reflective skincare devotion.", post: "Launch '40 Days of Soft Devotion' series + a printable journal companion.", pillar: "Numa FaithFlow" },
+  { m: 1, d: "Feb 20", name: "World Day of Social Justice", cat: "global", why: "Highlight Numa's fair-trade sourcing + women's cooperatives.", post: "Photo essay: women's shea cooperative we partner with.", pillar: "Ingredient Education" },
+
+  // MARCH
+  { m: 2, d: "Mar", name: "National Nutrition Month", cat: "nutri", why: "Cornerstone month for the inside-out beauty conversation.", post: "Month-long series: 'eat for your skin' — weekly Ghanaian recipe + skincare tie-in.", pillar: "Skin Education / Tips" },
+  { m: 2, d: "Mar 6", name: "Independence Day (Ghana)", cat: "ghana", why: "Major national pride moment — celebrate Ghanaian beauty heritage.", post: "Founder's letter + flag-coloured product flat-lay + 'Made in Ghana with prayer' caption.", pillar: "The Numa Process" },
+  { m: 2, d: "Mar 8", name: "International Women's Day", cat: "global", why: "Honour the women behind every jar — from cooperatives to customers.", post: "Photo essay: meet 8 women in the Numa supply chain.", pillar: "Testimonies" },
+  { m: 2, d: "Mar 15", name: "World Sleep Day (3rd Friday)", cat: "skin", why: "Sleep is the most underrated skincare ingredient.", post: "Reel: 'Your skin's overnight to-do list' — what happens while you sleep.", pillar: "Skin Education / Tips" },
+  { m: 2, d: "Mar 20", name: "International Day of Happiness", cat: "global", why: "Happy hormones = happy skin.", post: "Quote tile: 'Your nervous system is part of your skincare routine.'", pillar: "Quotes" },
+  { m: 2, d: "Mar 22", name: "World Water Day", cat: "skin", why: "Hydration sermon day. Internal + external water for skin.", post: "Carousel: '5 ways water shows up in your skin' + a hydration challenge.", pillar: "Skin Education / Tips" },
+  { m: 2, d: "Mar (varies)", name: "Palm Sunday", cat: "faith", why: "Holy Week opening — reflective, anointing-themed posts.", post: "Reel: scripture reading + slow oil application — Mary's anointing reflection.", pillar: "Numa FaithFlow" },
+
+  // APRIL
+  { m: 3, d: "Apr (varies)", name: "Good Friday", cat: "faith", why: "Reflection day — public holiday in Ghana.", post: "Single image with scripture + closed-day notice.", pillar: "Numa FaithFlow" },
+  { m: 3, d: "Apr (varies)", name: "Easter Sunday", cat: "faith", why: "Massive in Ghana — celebration + new beginnings.", post: "'He is risen + we are restored' Reel + Easter limited gift set.", pillar: "Numa FaithFlow" },
+  { m: 3, d: "Apr (varies)", name: "Easter Monday", cat: "ghana", why: "Public holiday + family day. Numa as the gift to bring home.", post: "Story: 'Easter Monday with the Numa family' takeover.", pillar: "Numa Vibe" },
+  { m: 3, d: "Apr 7", name: "World Health Day", cat: "skin", why: "Holistic wellness day — perfect to position Numa as health-aligned.", post: "'5 daily habits we believe in' — sleep, hydration, sunlight, prayer, anoint.", pillar: "Skin Education / Tips" },
+  { m: 3, d: "Apr 22", name: "Earth Day", cat: "global", why: "Organic and sustainability are Numa's bedrock.", post: "Sustainability story: how we source, package, and reduce waste.", pillar: "The Numa Process" },
+  { m: 3, d: "Apr", name: "Stress Awareness Month", cat: "skin", why: "Stress lives on the skin. Speak to it.", post: "Carousel: 'How stress is showing up on your face' + 5 calming rituals.", pillar: "Skin Education / Tips" },
+  { m: 3, d: "Apr", name: "Rosacea Awareness Month", cat: "skin", why: "Sensitive skin community — a chance to feature gentle products.", post: "Customer story: how Numa works for sensitive skin.", pillar: "Testimonies" },
+
+  // MAY
+  { m: 4, d: "May 1", name: "Workers' Day (Ghana)", cat: "ghana", why: "Honour every working woman — including the women in Numa's supply chain.", post: "Photo carousel: 'The women whose hands make Numa.'", pillar: "The Numa Process" },
+  { m: 4, d: "May", name: "Skin Cancer Awareness Month", cat: "skin", why: "Sunscreen myths in Ghana need debunking.", post: "Reel: '3 SPF lies your auntie told you' — myth-bust series.", pillar: "Skin Education / Tips" },
+  { m: 4, d: "May", name: "Mental Health Awareness Month", cat: "skin", why: "Skin-mind connection — stress, anxiety, hormones live on the face.", post: "Carousel: 'When my anxiety shows up on my skin' — 5 customer stories.", pillar: "Testimonies" },
+  { m: 4, d: "May (2nd Sun)", name: "Mother's Day", cat: "global", why: "Major gifting moment — Numa for the woman who pours into everyone.", post: "Launch a 'Mother's Day soft-care set' + customer mom features.", pillar: "Testimonies" },
+  { m: 4, d: "May 12", name: "International Nurses Day", cat: "global", why: "Nurses and caregivers — community pillar to honour.", post: "Highlight a nurse customer + thank-you offer.", pillar: "Testimonies" },
+  { m: 4, d: "May 20", name: "World Bee Day", cat: "global", why: "Beeswax + honey are Numa ingredients — direct relevance.", post: "Photo essay: visiting our beeswax supplier in Brong-Ahafo.", pillar: "Ingredient Education" },
+  { m: 4, d: "May 27", name: "National Sunscreen Day", cat: "skin", why: "Major SPF education day.", post: "Long-form Reel: how to apply SPF over Numa products correctly.", pillar: "Product Education" },
+  { m: 4, d: "May 28", name: "Menstrual Hygiene Day", cat: "skin", why: "Cycle-skin connection — break taboos.", post: "Carousel: 'Your skin throughout your cycle' — week-by-week breakdown.", pillar: "Skin Education / Tips" },
+  { m: 4, d: "May (Effutu)", name: "Aboakyer Festival", cat: "ghana", why: "Effutu people's festival in Winneba — cultural celebration moment.", post: "Brief cultural recognition post + community wellness reflection.", pillar: "Events / Pop-Ups" },
+
+  // JUNE
+  { m: 5, d: "Jun", name: "Acne Awareness Month", cat: "skin", why: "Speak to the skin reality of so many customers.", post: "Series: 'Acne, without the shame' — 4 customer stories + product education.", pillar: "Skin Education / Tips" },
+  { m: 5, d: "Jun", name: "Fresh Fruit & Vegetables Month", cat: "nutri", why: "Anchor for inside-out beauty content.", post: "Recipe series: '4 Ghanaian fruits that fight skin dullness.'", pillar: "Skin Education / Tips" },
+  { m: 5, d: "Jun 5", name: "World Environment Day", cat: "global", why: "Reinforce organic, sustainable identity.", post: "What 'organic' really means at Numa — 5-slide explainer.", pillar: "The Numa Process" },
+  { m: 5, d: "Jun (3rd Sun)", name: "Father's Day", cat: "global", why: "Skincare for men matters too — break the gendered shopping pattern.", post: "'Numa for him' carousel — products dads love.", pillar: "Product Education" },
+  { m: 5, d: "Jun 21", name: "International Day of Yoga", cat: "skin", why: "Movement + breath = skin.", post: "Reel: '3 yoga poses for facial circulation.'", pillar: "Skin Education / Tips" },
+  { m: 5, d: "Jun 23", name: "International Hydration Day", cat: "skin", why: "Hydration = the cheapest skincare upgrade.", post: "Hydration challenge: 7 days of tracking water + skin photos.", pillar: "Skin Education / Tips" },
+  { m: 5, d: "Jun (varies)", name: "Pentecost Sunday", cat: "faith", why: "Big in Ghanaian Christian calendar.", post: "Worship Reel + reflection on rest after labour.", pillar: "Numa FaithFlow" },
+  { m: 5, d: "Jun (Akan)", name: "Akwasidae Festival", cat: "ghana", why: "Major Ashanti tradition — every six weeks. Honor cultural rhythms.", post: "Brief recognition + tie to honoring traditional rhythms.", pillar: "Events / Pop-Ups" },
+
+  // JULY
+  { m: 6, d: "Jul", name: "UV Safety Awareness Month", cat: "skin", why: "Doubling down on sunscreen advocacy in peak sun.", post: "Carousel: '5 UV myths Ghanaians still believe.'", pillar: "Skin Education / Tips" },
+  { m: 6, d: "Jul", name: "National Watermelon Month", cat: "nutri", why: "Hydrating fruit — fun + relevant.", post: "Reel: 'Skin-friendly fruit juice recipe' featuring watermelon.", pillar: "Skin Education / Tips" },
+  { m: 6, d: "Jul 11", name: "World Population Day", cat: "global", why: "Diversity of skin types worth celebrating.", post: "Carousel: 'Numa for every skin tone in Ghana' — diverse customer photos.", pillar: "Testimonies" },
+  { m: 6, d: "Jul 24", name: "International Self-Care Day", cat: "skin", why: "Numa's calling card holiday.", post: "Major content drop: 'Self-care is stewardship' campaign + free guide.", pillar: "Numa Notes" },
+  { m: 6, d: "Jul 30", name: "International Day of Friendship", cat: "global", why: "Sisterhood angle.", post: "'Tag your skincare sister' giveaway.", pillar: "Numa Vibe" },
+
+  // AUGUST
+  { m: 7, d: "Aug 4", name: "Founders' Day (Ghana)", cat: "ghana", why: "National pride day — pair with founder spotlight.", post: "Founder's letter + 'why I started Numa' Reel.", pillar: "The Numa Process" },
+  { m: 7, d: "Aug", name: "Hair Loss Awareness Month", cat: "skin", why: "Hair-skin connection — scalp is skin too.", post: "Carousel: 'Scalp care = skincare' — 5 tips.", pillar: "Skin Education / Tips" },
+  { m: 7, d: "Aug", name: "Family Meals Month", cat: "nutri", why: "Nutrition + family + skin tie-in.", post: "Recipe carousel: '5 Ghanaian family meals that love your skin back.'", pillar: "Skin Education / Tips" },
+  { m: 7, d: "Aug (3rd Sat)", name: "World Honey Bee Day", cat: "global", why: "Honey + beeswax in Numa products.", post: "Photo essay: from hive to lip whip.", pillar: "Ingredient Education" },
+  { m: 7, d: "Aug (Ga)", name: "Homowo Festival (Ga people)", cat: "ghana", why: "Major Ga harvest festival — community + nutrition heritage.", post: "Cultural recognition + 'foods of harvest, foods of glow' carousel.", pillar: "Skin Education / Tips" },
+  { m: 7, d: "Aug 19", name: "World Humanitarian Day", cat: "global", why: "Highlight Numa's community impact.", post: "Donate-to-receive campaign or community spotlight.", pillar: "Events / Pop-Ups" },
+  { m: 7, d: "Aug (Northern)", name: "Damba Festival", cat: "ghana", why: "Northern Ghana cultural moment — shea sourcing region.", post: "Photo essay: 'Where shea comes from' — Tamale visit.", pillar: "Ingredient Education" },
+
+  // SEPTEMBER
+  { m: 8, d: "Sep", name: "Healthy Aging Month", cat: "skin", why: "Reframe aging as something to honor, not fight.", post: "Quote tile: 'Aging is not a problem to solve, it's a privilege to honor.'", pillar: "Quotes" },
+  { m: 8, d: "Sep", name: "Whole Grains Month", cat: "nutri", why: "Whole foods = whole skin.", post: "Recipe carousel: '5 Ghanaian whole grains for inside-out beauty.'", pillar: "Skin Education / Tips" },
+  { m: 8, d: "Sep 8", name: "International Literacy Day", cat: "global", why: "Education-first brand value.", post: "'Read your skin' carousel — teaching skin literacy.", pillar: "Skin Education / Tips" },
+  { m: 8, d: "Sep 21", name: "Kwame Nkrumah Memorial Day (Ghana)", cat: "ghana", why: "Ghana national hero — proud of being Ghanaian-built.", post: "Quote graphic + 'Made in Ghana' product spotlight.", pillar: "The Numa Process" },
+  { m: 8, d: "Sep 21", name: "World Gratitude Day", cat: "global", why: "Brand loves a thanksgiving moment.", post: "Story takeover: 'thank you to our community' — 10 customer features.", pillar: "Testimonies" },
+  { m: 8, d: "Sep (Akuapem)", name: "Odwira Festival", cat: "ghana", why: "Akuapem cleansing + thanksgiving festival — beautiful tie-in.", post: "Cultural recognition + reflection on cleansing rituals.", pillar: "Events / Pop-Ups" },
+
+  // OCTOBER
+  { m: 9, d: "Oct 1", name: "World Vegetarian Day", cat: "nutri", why: "Plant-based eating + skin benefits.", post: "Recipe Reel: skin-loving Ghanaian vegetarian dish.", pillar: "Skin Education / Tips" },
+  { m: 9, d: "Oct", name: "Breast Cancer Awareness Month", cat: "skin", why: "Annual community moment — partner with women's health.", post: "Pink-themed product reveal + portion of proceeds donated.", pillar: "Events / Pop-Ups" },
+  { m: 9, d: "Oct 10", name: "World Mental Health Day", cat: "skin", why: "Mind-skin connection at the centre.", post: "Customer Reel: 'how my skincare ritual saves my mental health.'", pillar: "Numa FaithFlow" },
+  { m: 9, d: "Oct 11", name: "International Day of the Girl", cat: "global", why: "Skincare education for younger women.", post: "Carousel: '4 things every teen girl should know about skin.'", pillar: "Skin Education / Tips" },
+  { m: 9, d: "Oct 13", name: "World Sight Day (2nd Thu)", cat: "skin", why: "Under-eye care moment.", post: "Reel: 'How to care for the skin around your eyes.'", pillar: "Product Education" },
+  { m: 9, d: "Oct 16", name: "World Food Day", cat: "nutri", why: "Major food-as-skincare day.", post: "Big content drop: 'Eat your skincare' challenge launch.", pillar: "Skin Education / Tips" },
+  { m: 9, d: "Oct 31", name: "Reformation Day", cat: "faith", why: "Faith-rooted audiences observe this.", post: "Quiet scripture post on renewal + restoration.", pillar: "Numa FaithFlow" },
+
+  // NOVEMBER
+  { m: 10, d: "Nov 1", name: "World Vegan Day", cat: "nutri", why: "Numa's plant-based ingredient story.", post: "Carousel: 'Why Numa is naturally plant-rooted.'", pillar: "Ingredient Education" },
+  { m: 10, d: "Nov", name: "National Healthy Skin Month", cat: "skin", why: "Most relevant month of the year.", post: "Major month-long campaign: '30 days of intentional skin care.'", pillar: "Skin Education / Tips" },
+  { m: 10, d: "Nov 14", name: "World Diabetes Day", cat: "skin", why: "Sugar + skin connection.", post: "Carousel: '4 ways sugar shows up on your face.'", pillar: "Skin Education / Tips" },
+  { m: 10, d: "Nov (Ewe)", name: "Hogbetsotso Festival", cat: "ghana", why: "Ewe people's festival — cultural recognition.", post: "Brief cultural respect post + heritage reflection.", pillar: "Events / Pop-Ups" },
+  { m: 10, d: "Nov 25", name: "International Day for Elimination of Violence Against Women", cat: "global", why: "Numa stands for women's wellness in every form.", post: "Powerful quote tile + helpline resources for Ghana.", pillar: "Numa Notes" },
+  { m: 10, d: "Nov (4th Thu)", name: "American Thanksgiving", cat: "global", why: "International audience touchpoint + gratitude content.", post: "Founder's note: 'a thanksgiving for our customers.'", pillar: "Testimonies" },
+  { m: 10, d: "Nov (Last Wk)", name: "Black Friday / Cyber Monday", cat: "global", why: "Major commerce moment — opportunity to do it Numa-style.", post: "'Soft sale' campaign — slow, intentional discounts + a no-discount take.", pillar: "Product Education" },
+  { m: 10, d: "Nov", name: "Movember (men's health)", cat: "skin", why: "Gendered skincare expansion — talk to the men in our customers' lives.", post: "Carousel: 'Numa for him' + the men using our products.", pillar: "Product Education" },
+
+  // DECEMBER
+  { m: 11, d: "Dec 1", name: "World AIDS Day", cat: "skin", why: "Global health solidarity moment.", post: "Quiet acknowledgement post + community resource sharing.", pillar: "Numa Notes" },
+  { m: 11, d: "Dec 1-24", name: "Advent (4 Sundays)", cat: "faith", why: "Build-up to Christmas — perfect 4-week reflection series.", post: "'4 Sundays of Soft Devotion' series — rest, anointing, beauty, becoming.", pillar: "Numa FaithFlow" },
+  { m: 11, d: "Dec (1st Fri)", name: "Farmers' Day (Ghana)", cat: "ghana", why: "Celebrates the people behind every Numa ingredient.", post: "Photo essay: meet the farmers who grow what's in your jar.", pillar: "Ingredient Education" },
+  { m: 11, d: "Dec 5", name: "International Volunteer Day", cat: "global", why: "Numa community service moment.", post: "Highlight team volunteering + an open volunteer call.", pillar: "Events / Pop-Ups" },
+  { m: 11, d: "Dec 10", name: "Human Rights Day", cat: "global", why: "Dignity + ethical sourcing values.", post: "Statement post on fair-trade sourcing.", pillar: "The Numa Process" },
+  { m: 11, d: "Dec 21", name: "Winter/Summer Solstice", cat: "global", why: "Natural rhythm + seasonal skin shifts.", post: "Carousel: 'Caring for your skin in Harmattan'.", pillar: "Skin Education / Tips" },
+  { m: 11, d: "Dec 25", name: "Christmas Day", cat: "faith", why: "Major faith + gifting moment in Ghana.", post: "Christmas morning ritual Reel + curated gift sets.", pillar: "Numa FaithFlow" },
+  { m: 11, d: "Dec 26", name: "Boxing Day (Ghana)", cat: "ghana", why: "Public holiday — slow-day content opportunity.", post: "'A Numa Boxing Day' — slow morning content + journaling prompt.", pillar: "Note to Self" },
+  { m: 11, d: "Dec 31", name: "Watch Night / New Year's Eve", cat: "faith", why: "Major Ghanaian church night — reflection + blessing.", post: "Year-in-review carousel + blessing for the new year.", pillar: "Numa FaithFlow" },
+  { m: 11, d: "Dec 31", name: "End-of-year Reflection", cat: "global", why: "Universal moment for retrospect.", post: "'12 things Numa learned this year' carousel.", pillar: "Numa Notes" }
+];
+
+/* ========= FORMULAS ========= */
+const formulas = [
+  { name: "The Soft Sermon", purpose: "For Numa Notes / FaithFlow", structure: "[scripture or affirmation] / [observation about life] / [a tender command] // [a soft CTA]", example: "'beloved, prosper in all things' / today the world is loud / sit. drink water. anoint your skin. // tag a sister who needs the reminder." },
+  { name: "The Two-Voice Bit", purpose: "For Numa Care Check", structure: "[Numa Police caught you] // [Numa Care Guide forgives + teaches] // [product CTA]", example: "POV: numa police caught you sleeping with sunscreen on. // care guide: cleanse, repair, butter, breathe. // shop the gentle balm. ↓" },
+  { name: "The Anatomy Carousel", purpose: "For A Closer Look / Product Education", structure: "[hook] / [what it is] / [who it's for] / [how to use] / [what to expect] / [proof] / [CTA]", example: "the rose elixir, in 7 slides. swipe to read like a love letter to your skin." },
+  { name: "The Whisper", purpose: "For Note to Self", structure: "lowercase / fragment / sensory verb / a permission // (no CTA — let it sit)", example: "note to self: / the butter is on the counter. / soften now. / tomorrow is allowed to wait." },
+  { name: "The Origin Story", purpose: "For The Numa Process / Ingredient Education", structure: "[ingredient name] — [where it comes from] // [how it gets to you] // [why it matters] // [the Numa product it lives in]", example: "shea butter — from karité trees in Tamale. // women's hands roast, grind, press it. // it carries vitamins your skin reads as nourishment. // every Numa jar starts here." },
+  { name: "The Testimony", purpose: "For Testimonies", structure: "[customer name + how long they've been with us] // [her experience in her own words] // [the product she loves] // [open question to community]", example: "ama's been with us since 2024. she came in for the body butter. she stayed for the lip whip. her own words: '...' // tag your numa sister." },
+  { name: "The Myth-Bust", purpose: "For Skin Education", structure: "[bold myth statement in caps] / [the truth] / [why it matters] / [what to do instead]", example: "MYTH: 'dark skin doesn't need SPF.' // truth: UV damages every skin tone. // your hyperpigmentation is the proof." },
+  { name: "The Save-For-Later", purpose: "For Quotes", structure: "one-line quote in lowercase / [optional: pillar tag in caption] // 'save this for the day you forget'", example: "rest is a love letter to your future self. // save this for monday." },
+  { name: "The Behind-Scenes Diary", purpose: "For The Numa Process / Numa Vibe", structure: "[time stamp] / [what's happening] / [a small detail] // [why it matters in 1 line]", example: "wednesday, 4pm. // the lemongrass batch is cooling. // the studio smells like a herb garden. // every jar is patience." },
+  { name: "The Skin Sermon (mini)", purpose: "For Numa FaithFlow", structure: "[scripture line] / [what it taught me about my body] / [how it lives in my routine] / [closing prayer or invitation]", example: "'fearfully and wonderfully made.' // I stopped asking my skin to apologize. // now I anoint it. // amen." },
+  { name: "The Question Hook", purpose: "Universal — works for almost any pillar", structure: "[provocative question] / [pause] / [your answer] // [invite their answer in comments]", example: "what does your skin remember about your week? // mine remembers stress, late nights, and not enough water. // tell me yours." },
+  { name: "The List That Holds Hands", purpose: "Universal — for carousels", structure: "[number]. [topic] in title slide. // each slide: [one item, a tender note, a small action]", example: "5 things your skin is asking for this week. // 1. water. 2. sleep. 3. softer cleansing. 4. less sugar. 5. more sunlight, less screen." }
+];
+
+/* ========= RENDER ========= */
+function renderPillars() {
+  const grid = document.getElementById('pillarGrid');
+  grid.innerHTML = pillars.map(p => `
+    <div class="pillar-card" data-id="${p.id}" onclick="openPillar(${p.id})">
+      <div class="num">PILLAR / 0${p.id < 10 ? '0' + p.id : p.id}</div>
+      <h3>${p.name}</h3>
+      <div class="tagline">${p.tagline}</div>
+      <p class="summary">${p.summary}</p>
+      <div class="open-link">Open the brief →</div>
+    </div>
+  `).join('');
+}
+
+function openPillar(id) {
+  const p = pillars.find(x => x.id === id);
+  if (!p) return;
+  const modal = document.getElementById('modalContent');
+  modal.innerHTML = `
+    <button class="close" onclick="closeModal()">×</button>
+    <div class="modal-eyebrow">Pillar / 0${p.id < 10 ? '0' + p.id : p.id}</div>
+    <h2>${p.name}</h2>
+    <div class="modal-tagline">${p.tagline}</div>
+
+    <div class="modal-meta">
+      <div class="meta-item"><div class="label">Voice</div><div class="value">${p.voice}</div></div>
+      <div class="meta-item"><div class="label">Best Formats</div><div class="value">${p.formats}</div></div>
+      <div class="meta-item"><div class="label">Cadence</div><div class="value">${p.cadence}</div></div>
+      <div class="meta-item"><div class="label">The Promise</div><div class="value">${p.promise}</div></div>
+    </div>
+
+    <h3><span class="accent"></span>What this pillar achieves</h3>
+    <p>${p.summary}</p>
+
+    <h3><span class="accent"></span>A caption template</h3>
+    <div class="caption-template">${p.caption}</div>
+
+    <h3><span class="accent"></span>Hashtag bank</h3>
+    <div class="hashtag-cloud">${p.hashtags.map(h => `<span>${h}</span>`).join('')}</div>
+
+    <h3><span class="accent"></span>${p.ideas.length} ready-to-shoot post ideas</h3>
+    <ul class="ideas">
+      ${p.ideas.map(i => `<li><span class="format">${i.f}</span>${i.t}</li>`).join('')}
+    </ul>
+  `;
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'modalOverlay') closeModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+function renderCalendar(filter = 'all') {
+  const root = document.getElementById('calendarRoot');
+  let html = '';
+  for (let m = 0; m < 12; m++) {
+    const monthHolidays = holidays.filter(h => h.m === m && (filter === 'all' || h.cat === filter));
+    if (monthHolidays.length === 0) continue;
+    html += `<div class="month-section">
+      <h3>${months[m]} <span class="month-num">/ MONTH ${(m + 1).toString().padStart(2, '0')}</span></h3>
+      <div class="holiday-grid">
+        ${monthHolidays.map(h => `
+          <div class="holiday-card">
+            <div class="date">${h.d}</div>
+            <h4>${h.name}</h4>
+            <span class="tag tag-${h.cat}">${({ghana:'Ghana',skin:'Skincare/Health',nutri:'Nutrition',faith:'Faith',global:'Global'})[h.cat]}</span>
+            <p class="why">${h.why}</p>
+            <div class="post-idea"><strong>Post angle</strong>${h.post}</div>
+            <div class="pillar-tie">↳ Best pillar: ${h.pillar}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  }
+  root.innerHTML = html;
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderCalendar(btn.dataset.filter);
+  });
+});
+
+function renderFormulas() {
+  const root = document.getElementById('formulaList');
+  root.innerHTML = formulas.map(f => `
+    <div class="formula-card">
+      <div class="formula-name">${f.name}</div>
+      <div class="formula-purpose">${f.purpose}</div>
+      <div class="formula-structure">${f.structure}</div>
+      <div class="formula-example"><strong>Example</strong>${f.example}</div>
+    </div>
+  `).join('');
+}
+
+renderPillars();
+renderCalendar();
+renderFormulas();
+</script>
+</body>
+</html>
